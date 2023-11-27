@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+  margin-bottom: rem(30px);
+}
+
+.dropzone {
+  border-width: rem(1px);
+  padding-bottom: rem(50px);
+}
+
+.dropzoneSuccess {
+  border-width: rem(2px); /* Slightly thicker border for emphasis */
+  border-style: dashed; /* Optional: change the border style */
+  border-color: var(--mantine-color-green-6); /* Use a green color to indicate success */
+  background-color: var(--mantine-color-green-1); /* Light green background for a subtle indication */
+  color: var(--mantine-color-green-9); /* Dark green text color */
+  padding-bottom: rem(50px);
+}
+
+
+.icon {
+  color: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-3));
+}
+
+.control {
+  position: absolute;
+  width: rem(250px);
+  left: calc(50% - rem(125px));
+  bottom: rem(-20px);
+}

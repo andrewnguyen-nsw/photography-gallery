@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 .DS_Store
+
+# Google Cloud JSON key
+photography-gallery-406109-fa36d10b8174.json
