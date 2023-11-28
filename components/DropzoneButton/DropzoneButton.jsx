@@ -1,77 +1,113 @@
-'use client';
+"use client";
 
-import { useRef, useState, useEffect } from 'react';
-import { Text, Group, Button, Input, Tooltip, Blockquote, rem, useMantineTheme } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
-import { Dropzone, IMAGE_MIME_TYPE } from '@mantine/dropzone';
-import { IconCloudUpload, IconX, IconDownload, IconFile } from '@tabler/icons-react';
-import classes from './DropzoneButton.module.css';
+import { useRef, useState, useEffect } from "react";
+import {
+  Text,
+  Group,
+  Button,
+  Input,
+  Tooltip,
+  Blockquote,
+  rem,
+  useMantineTheme,
+} from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
+import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
+import {
+  IconCloudUpload,
+  IconX,
+  IconDownload,
+  IconFile,
+} from "@tabler/icons-react";
+import classes from "./DropzoneButton.module.css";
+
+function FileDetails({ file, onGenreChange, onAltTextChange }) {
+  return (
+    <div key={file.name}>
+      <Blockquote radius="xs" mt="xs" className={classes.blockquote}>
+        {file.name}
+      </Blockquote>
+      <Tooltip
+        label="Example: ['street', 'long-exposure']"
+        color="gray.8"
+        position="top-start"
+        offset={0}
+      >
+        <Input
+          radius="xs"
+          placeholder="Genre"
+          mt="xs"
+          onChange={onGenreChange}
+        />
+      </Tooltip>
+      <Tooltip
+        label="Enter descriptive text for accessibility & SEO purposes."
+        color="gray.8"
+        position="top-start"
+        offset={0}
+      >
+        <Input
+          radius="xs"
+          placeholder="Alt text"
+          mt="xs"
+          onChange={onAltTextChange}
+        />
+      </Tooltip>
+    </div>
+  );
+}
 
 export default function DropzoneButton() {
   const theme = useMantineTheme();
-  const isSmallScreen = useMediaQuery('(max-width: 40em)');
+  const isSmallScreen = useMediaQuery("(max-width: 40em)");
   const openRef = useRef(null);
   const fileIcon = <IconFile />;
-  const [genre, setGenre] = useState('');
-  const [altText, setAltText] = useState('');
-  const [file, setFile] = useState();
-  const [uploadedFileName, setUploadedFileName] = useState('');
-  const [selectFileButton, setSelectFileButton] = useState(
-    <Button className={classes.control} size="md" radius="xl" onClick={() => openRef.current?.()}>
-      Select files
-    </Button>
-  );
-  const [submitButton, setSubmitButton] = useState('');
+
+  const [file, setFile] = useState(null);
+  const [genre, setGenre] = useState("");
+  const [altText, setAltText] = useState("");
 
   const handleDrop = (files) => {
-    console.log('Accepted files', files);
+    console.log("Accepted file", files[0]);
+    setFile(files[0]);
+  };
 
-    // Show the uploaded filename
-    setUploadedFileName(
-      files.map((file) => {
-        setFile(file);
-        return (
-          <div key={file.name}>
-            <Blockquote radius="xs" mt="xs" style={{padding: "12px 12px 12px 48px"}}>
-              {file.name}
-            </Blockquote>
-            <Tooltip label="Example: ['street', 'long-exposure']" color="gray.8" position="top-start" offset={0}>
-              <Input radius="xs" placeholder="Genre" mt="xs" onChange={(e) => setGenre(e.target.value)}/>
-            </Tooltip>
-            <Input radius="xs" placeholder="Alt text" mt="xs" onChange={(e) => setAltText(e.target.value)}/>
-          </div>
-        )})
-    );
-
-    // Hide the select file button
-    setSelectFileButton('');
-    
-    // Show the submit button
-    setSubmitButton(
-      <Button variant='filled' fullWidth={isSmallScreen} radius="xs" className='mt-4' onClick={handleSubmit}>Submit</Button>
-    );
-
-  }
-
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log(file);
     console.log(genre);
     console.log(altText);
-  }
+
+    try {
+      const response = await fetch('api/gallery', {
+        method: 'POST',
+        body: JSON.stringify({
+          file,
+          genre,
+          altText
+        })
+      })
+
+      if (response.ok) {
+        console.log('Submit Successfully!')
+      }
+    } catch (error) {
+      console.log(error);      
+    }
+  };
 
   return (
     <div className={classes.wrapper}>
       <Dropzone
         openRef={openRef}
         onDrop={(files) => handleDrop(files)}
-        onReject={(files) => console.log('rejected files', files)}
+        onReject={(files) => console.log("rejected files", files)}
         className={classes.dropzone}
         radius="md"
         multiple={false}
         accept={IMAGE_MIME_TYPE}
         maxSize={30 * 1024 ** 2}
       >
-        <div style={{ pointerEvents: 'none' }}>
+        <div style={{ pointerEvents: "none" }}>
           <Group justify="center">
             <Dropzone.Accept>
               <IconDownload
@@ -88,7 +124,10 @@ export default function DropzoneButton() {
               />
             </Dropzone.Reject>
             <Dropzone.Idle>
-              <IconCloudUpload style={{ width: rem(50), height: rem(50), marginTop: rem(16) }} stroke={1.5} />
+              <IconCloudUpload
+                style={{ width: rem(50), height: rem(50), marginTop: rem(16) }}
+                stroke={1.5}
+              />
             </Dropzone.Idle>
           </Group>
 
@@ -98,17 +137,38 @@ export default function DropzoneButton() {
             <Dropzone.Idle>Upload new photo</Dropzone.Idle>
           </Text>
           <Text ta="center" fz="sm" mt="xs" c="dimmed">
-            Drag &apos;n&apos; drop files here to upload. We can accept only <i>.pdf</i> files that
-            are less than 30mb in size.
+            Drag &apos;n&apos; drop photo here to upload.
           </Text>
         </div>
       </Dropzone>
 
-      {selectFileButton}
-
-      {uploadedFileName}
-
-      {submitButton}
+      {!file ? (
+        <Button
+          className={classes.control}
+          size="md"
+          radius="xl"
+          onClick={() => openRef.current?.()}
+        >
+          Select files
+        </Button>
+      ) : (
+        <>
+          <FileDetails
+            file={file}
+            onGenreChange={(e) => setGenre(e.target.value)}
+            onAltTextChange={(e) => setAltText(e.target.value)}
+          />
+          <Button
+            variant="filled"
+            fullWidth={isSmallScreen}
+            radius="xs"
+            className={classes.submitButton}
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
+        </>
+      )}
     </div>
   );
 }
