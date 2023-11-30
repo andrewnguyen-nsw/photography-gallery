@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { Tabs, rem } from '@mantine/core';
-import { IconPhoto, IconMoodSmileBeam, IconMountain, IconMotorbike, IconConfetti, IconBuildingSkyscraper, IconDrone, IconMoodKid } from '@tabler/icons-react';
+import { IconPhoto, IconMoodSmileBeam, IconMountain, IconMotorbike, IconComet, IconConfetti, IconBuildingSkyscraper, IconDrone, IconMoodKid } from '@tabler/icons-react';
+import classes from "./Tab.module.css"
 import Masonry from 'react-masonry-css';
 import Image from 'next/image';
 import DropzoneButton from "@components/DropzoneButton/DropzoneButton";
@@ -51,28 +52,31 @@ const Gallery = () => {
     <div className="homepage-container">
       <Tabs variant="pills" radius="xs" value={activeTab} onChange={setActiveTab}>
         <Tabs.List className="mb-6">
-          <Tabs.Tab value="all" leftSection={<IconPhoto style={iconStyle} />}>
+          <Tabs.Tab className={classes.tab} value="all" leftSection={<IconPhoto style={iconStyle} />}>
             All
           </Tabs.Tab>
-          <Tabs.Tab value="portrait" leftSection={<IconMoodSmileBeam style={iconStyle} />}>
+          <Tabs.Tab className={classes.tab} value="portrait" leftSection={<IconMoodSmileBeam style={iconStyle} />}>
             Portrait
           </Tabs.Tab>
-          <Tabs.Tab value="landscape" leftSection={<IconMountain style={iconStyle} />}>
+          <Tabs.Tab className={classes.tab} value="landscape" leftSection={<IconMountain style={iconStyle} />}>
             Landscape
           </Tabs.Tab>
-          <Tabs.Tab value="street" leftSection={<IconMotorbike style={iconStyle} />}>
+          <Tabs.Tab className={classes.tab} value="street" leftSection={<IconMotorbike style={iconStyle} />}>
             Street
           </Tabs.Tab>
-          <Tabs.Tab value="pre-wedding" leftSection={<IconConfetti style={iconStyle} />}>
+          <Tabs.Tab className={classes.tab} value="long-exposure" leftSection={<IconComet style={iconStyle} />}>
+            Long Exposure
+          </Tabs.Tab>
+          <Tabs.Tab className={classes.tab} value="pre-wedding" leftSection={<IconConfetti style={iconStyle} />}>
             Pre-Wedding
           </Tabs.Tab>
-          <Tabs.Tab value="architecture" leftSection={<IconBuildingSkyscraper style={iconStyle} />}>
+          <Tabs.Tab className={classes.tab} value="architecture" leftSection={<IconBuildingSkyscraper style={iconStyle} />}>
             Architecture
           </Tabs.Tab>
-          <Tabs.Tab value="drone" leftSection={<IconDrone style={iconStyle} />}>
+          <Tabs.Tab className={classes.tab} value="drone" leftSection={<IconDrone style={iconStyle} />}>
             Drone
           </Tabs.Tab>
-          <Tabs.Tab value="preschool" leftSection={<IconMoodKid style={iconStyle} />}>
+          <Tabs.Tab className={classes.tab} value="preschool" leftSection={<IconMoodKid style={iconStyle} />}>
             Preschool
           </Tabs.Tab>
         </Tabs.List>
@@ -87,6 +91,7 @@ const Gallery = () => {
         <TabsPanel genre="portrait" imagesData={imagesData}/>
         <TabsPanel genre="landscape" imagesData={imagesData}/>
         <TabsPanel genre="street" imagesData={imagesData}/>
+        <TabsPanel genre="long-exposure" imagesData={imagesData}/>
         <TabsPanel genre="pre-wedding" imagesData={imagesData}/>
         <TabsPanel genre="architecture" imagesData={imagesData}/>
         <TabsPanel genre="drone" imagesData={imagesData}/>

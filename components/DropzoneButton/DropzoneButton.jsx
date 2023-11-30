@@ -28,7 +28,7 @@ function FileDetails({ file, onGenreChange, onAltTextChange }) {
         {file.name}
       </Blockquote>
       <Tooltip
-        label="Example: ['street', 'long-exposure']"
+        label={`Example: ["street", "long-exposure"]`}
         color="gray.8"
         position="top-start"
         offset={0}

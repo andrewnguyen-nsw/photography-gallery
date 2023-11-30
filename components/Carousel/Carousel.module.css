@@ -1,0 +1,30 @@
+.carousel {
+  margin-top: rem(80);
+  margin-bottom: rem(80);
+
+  @mixin hover {
+    .carouselControls {
+      opacity: 0.9;
+    }
+  }
+}
+
+.carouselControls {
+  transition: opacity 150ms ease;
+  opacity: 0;
+}
+
+.carouselControls button {
+  background-color: white;
+}
+
+.carouselIndicator {
+  width: rem(4px);
+  height: rem(4px);
+  background-color: white;
+  transition: width 250ms ease;
+
+  &[data-active] {
+    width: rem(16px);
+  }
+}

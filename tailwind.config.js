@@ -14,6 +14,8 @@ module.exports = {
         playfair: ["Playfair Display", "serif"],
         raleway: ["Raleway", "sans-serif"],
         inter: ["Inter", "sans-serif"],
+        garamond: ["EB Garamond", "serif"],
+        literata: ["Literata", "serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

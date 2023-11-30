@@ -1,5 +1,6 @@
 import "@styles/globals.css";
 import "@mantine/core/styles.css";
+import '@mantine/carousel/styles.css';
 
 import React from "react";
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
@@ -7,6 +8,7 @@ import { theme } from "../theme";
 import Provider from "@components/Provider/Provider";
 import Nav from "@components/Nav/Nav";
 import Footer from "@components/Footer/Footer";
+
 
 export const metadata = {
   title: "AndrewNguyen's Photography Gallery",

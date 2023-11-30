@@ -1,0 +1,12 @@
+.tab {
+  background-color: var(--mantine-color-gray-1);
+  border: rem(1px) solid transparent;
+
+  @mixin hover {
+    border: rem(1px) solid var(--mantine-color-gray-6);
+  }
+
+  &[data-active] {
+    background-color: var(--tabs-color);
+  }
+}
