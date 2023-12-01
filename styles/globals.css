@@ -8,9 +8,18 @@
   @apply flex justify-center flex-col items-center;
 }
 
+.site-wrapper {
+  @apply flex flex-col min-h-full;
+}
+
+.content-wrapper {
+  @apply flex-1;
+}
+
 .homepage-container {
   @apply mx-auto w-11/12 sm:w-3/4;
 }
+
 
 .h1_text {
   @apply mt-10 text-4xl font-poppins font-bold text-neutral-800 sm:text-5xl sm:leading-[1.15];
@@ -36,21 +45,24 @@
   @apply flex justify-between items-center;
 }
 
-/* Masonry */
+
+
+
+/* Masonry 
 .my-masonry-grid {
-  display: -webkit-box; /* Not needed if autoprefixing */
-  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: -webkit-box; 
+  display: -ms-flexbox; 
   display: flex;
-  margin-left: -20px; /* gutter size offset */
+  margin-left: -20px;
   width: auto;
 }
 .my-masonry-grid_column {
-  padding-left: 20px; /* gutter size */
+  padding-left: 20px; 
   background-clip: padding-box;
 }
 
-/* Style your items */
-.my-masonry-grid_column > img { /* change div to reference your elements you put in <Masonry> */
+.my-masonry-grid_column > img { 
   background: grey;
   margin-bottom: 20px;
 }
+*/
