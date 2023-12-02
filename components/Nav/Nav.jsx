@@ -93,10 +93,10 @@ const Nav = () => {
       <Container size="lg">
         <div className={classes.inner}>
           {/* Large screen */}
-          <Group gap={5} visibleFrom="sm">
+          <Group gap={5} className={classes.leftGroup} visibleFrom="sm">
             {items}
           </Group>
-          <Link href="/">
+          <Link href="/" className={classes.logoContainer}>
             <Image
               src={AndrewNguyenLogo}
               alt="Andrew Nguyen Logo"
@@ -105,11 +105,7 @@ const Nav = () => {
               className="object-contain"
             />
           </Link>
-          <Group gap={5} visibleFrom="sm">
-            <Space w="xl" />
-            <Space w="xl" />
-            <Space w="xl" />
-
+          <Group gap={5} className={classes.rightGroup} justify="flex-end" visibleFrom="sm">
             {(session?.user) ? (
               <>
                 <Button

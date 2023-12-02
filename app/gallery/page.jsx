@@ -1,23 +1,59 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { Tabs, rem } from '@mantine/core';
-import { IconPhoto, IconMoodSmileBeam, IconMountain, IconMotorbike, IconComet, IconConfetti, IconBuildingSkyscraper, IconDrone, IconMoodKid } from '@tabler/icons-react';
-import classes from "./Tab.module.css"
-import Masonry from 'react-masonry-css';
-import Image from 'next/image';
+import { Tabs, Loader, rem } from "@mantine/core";
+import Image from "next/image";
+import {
+  IconPhoto,
+  IconMoodSmileBeam,
+  IconMountain,
+  IconMotorbike,
+  IconComet,
+  IconConfetti,
+  IconBuildingSkyscraper,
+  IconDrone,
+  IconMoodKid,
+} from "@tabler/icons-react";
+import classes from "./Tab.module.css";
+import Masonry from "react-masonry-css";
+import PhotoAlbum from "react-photo-album";
+import NextJsImage from "./NextJsImage";
 import DropzoneButton from "@components/DropzoneButton/DropzoneButton";
 
+// Styles for the icons used in the tabs
+const iconStyle = { width: rem(12), height: rem(12) };
+
+// Configuration for Masonry grid breakpoints
+const breakpointColumnsObj = {
+  default: 3,
+  768: 2,
+  400: 1,
+};
+
+// Tab items configuration, each item contains value, icon and label
+const tabItems = [
+  { value: "all", icon: IconPhoto, label: "All" },
+  { value: "portrait", icon: IconMoodSmileBeam, label: "Portrait" },
+  { value: "landscape", icon: IconMountain, label: "Landscape" },
+  { value: "street", icon: IconMotorbike, label: "Street" },
+  { value: "long-exposure", icon: IconComet, label: "Long Exposure" },
+  { value: "pre-wedding", icon: IconConfetti, label: "Pre-Wedding" },
+  {
+    value: "architecture",
+    icon: IconBuildingSkyscraper,
+    label: "Architecture",
+  },
+  { value: "drone", icon: IconDrone, label: "Drone" },
+  { value: "preschool", icon: IconMoodKid, label: "Preschool" },
+];
+
 const Gallery = () => {
-  const { data: session } = useSession();
-
-  const iconStyle = { width: rem(12), height: rem(12) };
-
+  const { data: session } = useSession(); // Use session hook to manage user sessions
   const [imagesData, setImagesData] = useState([]);
-  const [displayedImages, setDisplayedImages] = useState([]);
   const [activeTab, setActiveTab] = useState('all');
 
+  // Effect hook to fetch gallery images on component mount
   useEffect(() => {
     const fetchImagesData = async () => {
       try {
@@ -25,138 +61,118 @@ const Gallery = () => {
         const data = await response.json();
         setImagesData(data);
       } catch (error) {
-        console.error("Failed to fetch images: ", error)
+        console.error("Failed to fetch images: ", error);
       }
-    }
-    
+    };
+
     fetchImagesData();
   }, []);
 
-  useEffect(() => {
-    const images = imagesData.map((image) => {
-      return (
-        <Image
-          key={image.name}
-          src={image.url}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
-        />
-      );
-    });
-  
-    setDisplayedImages(images);
-  }, [imagesData]);
+  // Function to render each tab item
+  const renderTab = (item) => (
+    <Tabs.Tab
+      className={classes.tab}
+      value={item.value}
+      leftSection={<item.icon style={iconStyle} />}
+    >
+      {item.label}
+    </Tabs.Tab>
+  );
 
+  // Main component render
   return (
     <div className="homepage-container">
-      <Tabs variant="pills" radius="xs" value={activeTab} onChange={setActiveTab}>
-        <Tabs.List className="mb-6">
-          <Tabs.Tab className={classes.tab} value="all" leftSection={<IconPhoto style={iconStyle} />}>
-            All
-          </Tabs.Tab>
-          <Tabs.Tab className={classes.tab} value="portrait" leftSection={<IconMoodSmileBeam style={iconStyle} />}>
-            Portrait
-          </Tabs.Tab>
-          <Tabs.Tab className={classes.tab} value="landscape" leftSection={<IconMountain style={iconStyle} />}>
-            Landscape
-          </Tabs.Tab>
-          <Tabs.Tab className={classes.tab} value="street" leftSection={<IconMotorbike style={iconStyle} />}>
-            Street
-          </Tabs.Tab>
-          <Tabs.Tab className={classes.tab} value="long-exposure" leftSection={<IconComet style={iconStyle} />}>
-            Long Exposure
-          </Tabs.Tab>
-          <Tabs.Tab className={classes.tab} value="pre-wedding" leftSection={<IconConfetti style={iconStyle} />}>
-            Pre-Wedding
-          </Tabs.Tab>
-          <Tabs.Tab className={classes.tab} value="architecture" leftSection={<IconBuildingSkyscraper style={iconStyle} />}>
-            Architecture
-          </Tabs.Tab>
-          <Tabs.Tab className={classes.tab} value="drone" leftSection={<IconDrone style={iconStyle} />}>
-            Drone
-          </Tabs.Tab>
-          <Tabs.Tab className={classes.tab} value="preschool" leftSection={<IconMoodKid style={iconStyle} />}>
-            Preschool
-          </Tabs.Tab>
-        </Tabs.List>
+      {/* Tabs for image categories */}
+      <Tabs
+        variant="pills"
+        radius="xs"
+        value={activeTab}
+        onChange={setActiveTab}
+      >
+        <Tabs.List className="mb-6">{tabItems.map(renderTab)}</Tabs.List>
 
-        {session?.user.isAdmin && (
-          <div className="pb-8">
-            <DropzoneButton/>
-          </div>
-        )}
+        {/* Dropzone button for admin users */}
+        {session?.user.isAdmin && <DropzoneButtonWrapper />}
 
-        <TabsPanel genre="all" imagesData={imagesData}/>
-        <TabsPanel genre="portrait" imagesData={imagesData}/>
-        <TabsPanel genre="landscape" imagesData={imagesData}/>
-        <TabsPanel genre="street" imagesData={imagesData}/>
-        <TabsPanel genre="long-exposure" imagesData={imagesData}/>
-        <TabsPanel genre="pre-wedding" imagesData={imagesData}/>
-        <TabsPanel genre="architecture" imagesData={imagesData}/>
-        <TabsPanel genre="drone" imagesData={imagesData}/>
-        <TabsPanel genre="preschool" imagesData={imagesData}/>
+        {/* Rendering images for each category */}
+        {tabItems.map((item) => (
+          <TabsPanel
+            key={item.value}
+            genre={item.value}
+            imagesData={imagesData}
+          />
+        ))}
       </Tabs>
-
     </div>
-  )
+  );
 };
 
-const TabsPanel = ({ genre, imagesData }) => {
-  const breakpointColumnsObj = {
-    default: 3,
-    768: 2,
-    400: 1
-  };
+// Dropzone button component wrapped for conditional rendering
+const DropzoneButtonWrapper = () => (
+  <div className="pb-8">
+    <DropzoneButton />
+  </div>
+);
 
-  const [displayedImages, setDisplayedImages] = useState([]);
-  
+// Component to render the tab panel with images
+const TabsPanel = ({ genre, imagesData }) => {
+  const [photoAlbumImages, setPhotoAlbumImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Effect hook to update images on genre change
   useEffect(() => {
-    let images;
-    
-    if (genre === "all") {
-      images = imagesData
-        .map((image) => {
-          return (
-            <Image
-              key={image.name}
-              src={image.url}
-              alt={image.alt}
-              width={image.width}
-              height={image.height}
-            />
-          );
-        });
-    } else {
-      images = imagesData
-        .filter((image) => JSON.parse(image.genre).includes(genre))
-        .map((image) => {
-          return (
-            <Image
-              key={image.name}
-              src={image.url}
-              alt={image.alt}
-              width={image.width}
-              height={image.height}
-            />
-          );
-        });
-    }
-    
-    setDisplayedImages(images);
+    // setIsLoading(true);
+
+    // Filtering and mapping images based on the selected genre
+    const filteredImages =
+      genre === "all"
+        ? imagesData
+        : imagesData.filter((image) => JSON.parse(image.genre).includes(genre));
+
+    const transformedImages = filteredImages.map((image) => ({
+      src: image.url,
+      width: image.width,
+      height: image.height,
+      alt: image.alt,
+      // Add other properties as needed
+    }));
+
+    setPhotoAlbumImages(transformedImages);
+    setIsLoading(false);
   }, [genre, imagesData]);
 
+  {if (isLoading) {
+    return (
+      <div className="flex-center h-[60vh]">
+        <Loader />
+      </div>
+    )
+  }}
+
+  // Render layout for images
   return (
-    <Tabs.Panel value={genre}>
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {displayedImages}
-      </Masonry>
+    <Tabs.Panel value={genre} className="min-h-[50vh]">
+      <PhotoAlbum
+        photos={photoAlbumImages}
+        layout="columns"
+        columns={(containerWidth) => {
+          if (containerWidth < 640) return 1;
+          if (containerWidth < 1024) return 2;
+          return 3;
+        }}
+        renderPhoto={NextJsImage}
+        defaultContainerWidth={1200}
+        // sizes={{
+        //   size: "calc(100vw - 40px)",
+        //   sizes: [
+        //     { viewport: "(max-width: 299px)", size: "calc(100vw - 10px)" },
+        //     { viewport: "(max-width: 599px)", size: "calc(100vw - 20px)" },
+        //     { viewport: "(max-width: 1199px)", size: "calc(100vw - 30px)" },
+        //   ],
+        // }}
+      />
     </Tabs.Panel>
-  )
-}
+  );
+};
 
 export default Gallery;

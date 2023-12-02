@@ -28,13 +28,15 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <Provider>
-          <main>
-            <MantineProvider theme={theme}>
+          <MantineProvider theme={theme}>
+            <div className="site-wrapper">
               <Nav />
-              {children}
+              <main className="content-wrapper">
+                {children}
+              </main>
               <Footer />
-            </MantineProvider>
-          </main>
+            </div>
+          </MantineProvider>
         </Provider>
       </body>
     </html>
