@@ -12,6 +12,18 @@
   align-items: center;
 }
 
+.leftGroup, .rightGroup {
+  flex: 1;
+}
+
+.rightGroup {
+  /* justify-content: end !important; */
+}
+
+.logoContainer {
+  flex: 0 0 auto; /* Ensures that the logo doesn't grow or shrink */
+}
+
 .link {
   display: block;
   line-height: 1;

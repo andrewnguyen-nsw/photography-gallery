@@ -16,9 +16,9 @@ const NextJsImage = ({ photo, imageProps, wrapperStyle }) => {
         className={className}
         onClick={onClick}
         objectFit='cover'
-        // Add 'blurDataURL' if you have a low-resolution image placeholder
-        placeholder={'blurDataURL' in photo ? 'blur' : undefined}
-        blurDataURL={photo.blurDataURL}
+        // TODO later: Add 'blurDataURL'
+        // placeholder={'blurDataURL' in photo ? 'blur' : undefined}
+        // blurDataURL={photo.blurDataURL}
       />
     </div>
   );
