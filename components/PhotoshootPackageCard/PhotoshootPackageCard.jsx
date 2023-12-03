@@ -4,7 +4,7 @@ import { IconArrowRight } from '@tabler/icons-react';
 
 export default function PhotoshootPackageCard({ icon, title, desc }) {
   return (
-    <Paper withBorder radius="sm" mt={6} className={classes.card}>
+    <Paper withBorder radius="sm" className={classes.card}>
       <ThemeIcon
         size="lg"
         radius="md"

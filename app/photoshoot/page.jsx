@@ -72,7 +72,7 @@ const Photoshoot = () => {
 
       <h2 className="h2_text text-center my-10">Book đi chờ chi</h2>
 
-      <Grid className="mb-20">
+      <Grid className="mb-20 p-2">
         <Grid.Col span={{base:12, md:6, lg:4}}>
           <PhotoshootPackageCard icon={iconCamera} title="Starter package" desc={starterList} />
         </Grid.Col>

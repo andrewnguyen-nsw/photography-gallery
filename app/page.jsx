@@ -1,11 +1,11 @@
 "use client";
 
+import { Group, Button, Grid, SimpleGrid } from "@mantine/core";
+import GenresCard from "@components/GenresCard/GenresCard";
 import Image from "next/image";
 import heroSectionBackgroundLarge from "/public/assets/images/HeroSection-2.jpg";
 import heroSectionBackgroundMobile from "/public/assets/images/HeroSection.jpg";
 import aboutMe from "/public/assets/images/Avatar_Veu.png";
-import { Group, Button, Grid, SimpleGrid } from "@mantine/core";
-import GenresCard from "@components/GenresCard/GenresCard";
 
 export default function Home() {
   return (
@@ -32,13 +32,13 @@ export default function Home() {
           src={heroSectionBackgroundLarge}
           alt="Hero Section Background"
           quality={100}
-          className="mt-10 w-full max-w-6xl hidden sm:flex"
+          className="mt-10 w-full max-w-6xl h-auto hidden sm:flex"
         />
         <Image
           src={heroSectionBackgroundMobile}
           alt="Hero Section Background"
           quality={100}
-          className="mt-10 w-full max-w-6xl flex sm:hidden"
+          className="mt-10 w-full max-w-6xl h-auto flex sm:hidden"
         />
       </section>
 
