@@ -6,7 +6,7 @@ export const GET = async (req) => {
   try {
     // Initialize a Google Cloud Storage client with a specified service account key file
     const storage = new Storage({
-      keyFilename: "photography-gallery-406109-fa36d10b8174.json",
+      credentials: JSON.parse(process.env.GOOGLE_CLOUD_CREDENTIALS)
     });
 
     // Define the name of the bucket in Google Cloud Storage
