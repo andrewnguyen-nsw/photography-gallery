@@ -1,4 +1,7 @@
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   cursor: default;
   overflow: hidden;
@@ -29,6 +32,10 @@
 
 .arrowRotate {
   transition: transform 0.25s ease-in-out;
+}
+
+.button {
+  margin-top: auto;
 }
 
 .button:hover .arrowRotate {

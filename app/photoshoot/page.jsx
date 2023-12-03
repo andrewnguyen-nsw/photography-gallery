@@ -70,7 +70,8 @@ const Photoshoot = () => {
     <div className="homepage-container">
       <Carousel/>
 
-      <h2 className="h2_text text-center my-10">Book đi chờ chi</h2>
+      <h2 lang="vi" className="h2_text text-center">Book đi chờ chi</h2>
+      <h2 className="h2_serif text-center ">Want stunning photos?</h2>
 
       <Grid className="mb-20 p-2">
         <Grid.Col span={{base:12, md:6, lg:4}}>

@@ -49,10 +49,7 @@
   @apply flex justify-between items-center;
 }
 
-
-
-
-/* Masonry 
+/* Masonry  */
 .my-masonry-grid {
   display: -webkit-box; 
   display: -ms-flexbox; 
@@ -69,4 +66,3 @@
   background: grey;
   margin-bottom: 20px;
 }
-*/
