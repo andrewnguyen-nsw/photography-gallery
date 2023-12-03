@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import { Tabs, Loader, rem } from "@mantine/core";
 import Image from "next/image";
@@ -16,8 +16,17 @@ import {
   IconMoodKid,
 } from "@tabler/icons-react";
 import classes from "./Tab.module.css";
+
 import Masonry from "react-masonry-css";
 import PhotoAlbum from "react-photo-album";
+
+import LightGallery from 'lightgallery/react';
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-zoom.css';
+import 'lightgallery/css/lg-thumbnail.css';
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgZoom from 'lightgallery/plugins/zoom';
+
 import NextJsImage from "./NextJsImage";
 import DropzoneButton from "@components/DropzoneButton/DropzoneButton";
 
@@ -89,7 +98,9 @@ const Gallery = () => {
         value={activeTab}
         onChange={setActiveTab}
       >
-        <Tabs.List className="mb-6">{tabItems.map(renderTab)}</Tabs.List>
+        <Tabs.List className="mb-6">
+          {tabItems.map(renderTab)}
+        </Tabs.List>
 
         {/* Dropzone button for admin users */}
         {session?.user.isAdmin && <DropzoneButtonWrapper />}
@@ -118,6 +129,7 @@ const DropzoneButtonWrapper = () => (
 const TabsPanel = ({ genre, imagesData }) => {
   const [photoAlbumImages, setPhotoAlbumImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const lightboxRef = useRef(null);
 
   // Effect hook to update images on genre change
   useEffect(() => {
@@ -129,7 +141,8 @@ const TabsPanel = ({ genre, imagesData }) => {
         ? imagesData
         : imagesData.filter((image) => JSON.parse(image.genre).includes(genre));
 
-    const transformedImages = filteredImages.map((image) => ({
+    const transformedImages = filteredImages.map((image, index) => ({
+      idx: index,
       src: image.url,
       width: image.width,
       height: image.height,
@@ -152,6 +165,20 @@ const TabsPanel = ({ genre, imagesData }) => {
   // Render layout for images
   return (
     <Tabs.Panel value={genre} className="min-h-[50vh]">
+      {/* <LightGallery
+        onInit={(ref) => {
+          lightboxRef.current = ref.instance;
+        }}
+        speed={500}
+        plugins={[lgThumbnail, lgZoom]}
+        dynamic
+        dynamicEl={photoAlbumImages.map((image) => ({
+          src: image.src,
+          thumb: image.src,
+        }))}
+        licenseKey="0000-0000-000-0000"
+      /> */}
+
       <PhotoAlbum
         photos={photoAlbumImages}
         layout="columns"
@@ -160,6 +187,15 @@ const TabsPanel = ({ genre, imagesData }) => {
           if (containerWidth < 1024) return 2;
           return 3;
         }}
+        // renderPhoto={(photoProps) => (
+        //   <NextJsImage
+        //     {...photoProps}
+        //     imageProps={{
+        //       ...photoProps.imageProps,
+        //       onClick: () => lightboxRef.current.openGallery(photoProps.index),
+        //     }}
+        //   />
+        // )}
         renderPhoto={NextJsImage}
         defaultContainerWidth={1200}
         // sizes={{

@@ -21,6 +21,7 @@ import classes from "./Nav.module.css";
 import AndrewNguyenLogo from "@public/assets/images/logo.png";
 
 const links = [
+  { link: "/", label: "Home" },
   { link: "/gallery", label: "Gallery" },
   {
     link: "#1",
@@ -154,7 +155,6 @@ const Nav = () => {
             size="75%"
             opened={opened}
             onClose={toggle}
-            title="Home page"
             overlayProps={{ backgroundOpacity: 0.5, blur: 1 }}
           >
             <Stack gap={10}>{items}</Stack>

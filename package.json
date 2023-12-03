@@ -19,6 +19,7 @@
     "@tabler/core": "^1.0.0-beta20",
     "@tabler/icons-react": "^2.42.0",
     "embla-carousel-react": "^7.1.0",
+    "lightgallery": "^2.7.2",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.1",
     "next": "14.0.1",

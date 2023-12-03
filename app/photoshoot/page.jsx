@@ -67,11 +67,11 @@ const Photoshoot = () => {
   )
 
   return (
-    <div className="homepage-container">
-      <Carousel/>
-
+    <div className="homepage-container mt-12">
       <h2 lang="vi" className="h2_text text-center">Book đi chờ chi</h2>
       <h2 className="h2_serif text-center ">Want stunning photos?</h2>
+      
+      <Carousel/>
 
       <Grid className="mb-20 p-2">
         <Grid.Col span={{base:12, md:6, lg:4}}>

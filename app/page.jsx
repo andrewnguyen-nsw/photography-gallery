@@ -3,6 +3,7 @@
 import { Group, Button, Grid, SimpleGrid } from "@mantine/core";
 import GenresCard from "@components/GenresCard/GenresCard";
 import Image from "next/image";
+import Link from 'next/link';
 import heroSectionBackgroundLarge from "/public/assets/images/HeroSection-2.jpg";
 import heroSectionBackgroundMobile from "/public/assets/images/HeroSection.jpg";
 import aboutMe from "/public/assets/images/Avatar_Veu.png";
@@ -18,15 +19,15 @@ export default function Home() {
             {" "}
             Moments
           </span>
-          <br /> Through the Lens of Life
+          <br/> Through the Lens of Life
         </h1>
         <p className="desc w-11/12 text-center">
           Welcome to my gallery, where I showcase the beauty of the world
           through my lens. Explore my work and get inspired.
         </p>
         <Group className="mt-5">
-          <Button variant="filled">Explore</Button>
-          <Button variant="outline">About me</Button>
+          <Button variant="filled" component={Link} href="/gallery">Explore</Button>
+          <Button variant="outline" component={Link} href="#about">About me</Button>
         </Group>
         <Image
           src={heroSectionBackgroundLarge}
@@ -84,7 +85,7 @@ export default function Home() {
       </section>
 
       {/* // ABOUT ME SECTION ----------------------------------------------------------------------- */}
-      <section className="homepage-container mt-28">
+      <section className="homepage-container mt-28" id="about">
         <Group justify="space-between">
           <Image
             src={aboutMe}
