@@ -21,7 +21,7 @@
 }
 
 .homepage-container {
-  @apply mx-auto w-11/12 sm:w-3/4;
+  @apply mx-auto w-[88%] sm:w-3/4;
 }
 
 

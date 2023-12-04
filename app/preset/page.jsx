@@ -61,7 +61,7 @@ const items = faqs.map((item) => (
 const Presets = () => {
   const [activeImage, setActiveImage] = useState("https://storage.googleapis.com/andrew-gallery-photos/Preset/26-min.jpg");
   return (
-    <div className="homepage-container mt-8">
+    <div className="homepage-container mt-6 md:mt-8">
       <div className="flex flex-col md:flex-row -mx-4">
         {/* Left Section */}
         <div className="md:flex-1 px-4 w-50">
@@ -108,7 +108,7 @@ const Presets = () => {
         </div>
 
         {/* Right Section */}
-        <div className="md:flex-1 px-4">
+        <div className="mt-4 md:mt-0 md:flex-1 px-4">
           <h2 className="mb-2 leading-tight font-bold text-gray-800 text-2xl md:text-3xl">
             101 All in One Lightroom Presets
           </h2>
