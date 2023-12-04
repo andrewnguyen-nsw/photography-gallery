@@ -28,7 +28,7 @@ const links = [
     label: "Services",
     links: [
       { link: "/photoshoot", label: "Photoshoot" },
-      { link: "/presets", label: "Presets" },
+      { link: "/preset", label: "Preset" },
       { link: "/tour-guider", label: "Tour Guider" },
     ],
   },

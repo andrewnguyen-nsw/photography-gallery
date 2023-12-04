@@ -49,6 +49,14 @@
   @apply flex justify-between items-center;
 }
 
+.arrow-rotate {
+  transition: transform 0.25s ease-in-out;
+}
+
+button:hover .arrow-rotate {
+  transform: rotate(-90deg);
+}
+
 /* Masonry  */
 .my-masonry-grid {
   display: -webkit-box; 
