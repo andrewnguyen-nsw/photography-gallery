@@ -26,7 +26,7 @@ const Success = () => {
         <Image src={partyPopper} alt="party-popper"/>
         <p className='mt-6 md:mt-8'>Hey [username],</p>
         <h2 className='mt-1 text-xl font-bold'>Your Order is Confirmed!</h2>
-        <p className='mt-2 text-center'>Your download will begin shortly. If it doesn't start automatically, please click the button.</p>
+        <p className='mt-2 text-center'>Your download will begin shortly. If it doesn&apos;t start automatically, please click the button.</p>
         <Button variant='light' component={Link} href={link1} fullWidth className='my-4' leftSection={<IconDownload size={18}/>}>Download Presets</Button>
         <p className='text-sm'>A detailed order receipt is on its way to your email.</p>
         <Divider my="md"/>
