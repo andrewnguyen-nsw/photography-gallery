@@ -24,7 +24,6 @@
   @apply mx-auto w-[88%] sm:w-3/4;
 }
 
-
 .h1_text {
   @apply mt-10 text-4xl font-poppins font-bold text-neutral-800 sm:text-5xl sm:leading-[1.15];
 }
@@ -40,6 +39,31 @@
 .desc {
   @apply mt-5 text-sm font-roboto font-normal text-neutral-700 max-w-2xl sm:text-base;
 }
+
+.highlight-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.highlight-hover::before {
+  content: '';
+  position: absolute;
+  top: 43%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40%;
+  background-color: #FFE5B4; /* Peach color */
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.highlight-hover:hover::before {
+  transform: scaleX(1);
+}
+
 
 .flex-center {
   @apply flex justify-center items-center;

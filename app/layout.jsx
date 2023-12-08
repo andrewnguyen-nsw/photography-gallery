@@ -1,9 +1,11 @@
 import "@styles/globals.css";
 import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
+import '@mantine/notifications/styles.css';
 
 import React from "react";
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
+import { Notifications } from '@mantine/notifications';
 import { theme } from "../theme";
 import Provider from "@components/Provider/Provider";
 import Nav from "@components/Nav/Nav";
@@ -29,6 +31,7 @@ export default function RootLayout({ children }) {
       <body>
         <Provider>
           <MantineProvider theme={theme}>
+            <Notifications />
             <div className="site-wrapper">
               <Nav />
               <main className="content-wrapper">

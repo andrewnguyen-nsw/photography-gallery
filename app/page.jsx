@@ -13,7 +13,7 @@ export default function Home() {
       {/* // HERO SECTION ----------------------------------------------------------------------- */}
       <section className="flex-center flex-col ">
         <h1 className="h1_text text-center">
-          Capturing{" "}
+          <span className="highlight-hover">Capturing</span> {" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r to-stone-600 from-gray-800">
             {" "}
             Moments
@@ -43,11 +43,11 @@ export default function Home() {
       </section>
 
       {/* // GENRES SECTION ----------------------------------------------------------------------- */}
-      <section className="homepage-container mt-28">
+      <section className="homepage-container mt-16 md:mt-28">
         <Grid gutter="60">
           <Grid.Col span={{ base: 12, md: 4 }}>
             <h2 className="h2_text">
-              Explore the Diverse World of Photography
+              Explore the <span className="highlight-hover">Diverse World</span> of Photography
             </h2>
             <p className="desc">
               Discover a wide range of photography genres, each showcasing the
@@ -57,7 +57,7 @@ export default function Home() {
             </p>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 8 }}>
-            <SimpleGrid cols={2}>
+            <SimpleGrid cols={{ base: 1, xs: 2 }}>
               <GenresCard
                 title="Portrait"
                 description="Capturing the essence of individuals through close-ups, showcasing their expressions and personalities."
@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       {/* // ABOUT ME SECTION ----------------------------------------------------------------------- */}
-      <section className="homepage-container mt-28">
+      <section className="homepage-container my-10 md:my-20">
         <Group justify="space-between">
           <Image
             src={aboutMe}
@@ -95,7 +95,7 @@ export default function Home() {
           />
           <div className="w-full md:w-1/2">
             <h2 className="h2_text">
-              Who am I?
+              <span className="highlight-hover">Who am I?</span>
             </h2>
             <p className="desc">
               Hi there, I am Andrew (aka Thai Minh Nguyen), a photographer based in Ho Chi Minh City, Vietnam. I have been passionate about photography since I was a kid. I love capturing the beauty of the world through my lens and sharing it with others. I hope you enjoy my work as much as I enjoy creating it.
