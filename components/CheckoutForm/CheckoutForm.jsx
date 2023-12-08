@@ -11,7 +11,6 @@ import Image from 'next/image';
 import { Grid, Flex, Group, Divider, Input, TextInput, Button, Loader, Tooltip, Notification, rem } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useForm } from '@mantine/form';
-import { notifications } from '@mantine/notifications';
 import { IconExclamationCircle, IconAlertTriangleFilled, IconCreditCardPay } from '@tabler/icons-react';
 import PresetThumbnail from "/public/assets/images/101PresetsThumbnail.jpg";
 import Success from "@components/PaymentStatus/Success";
