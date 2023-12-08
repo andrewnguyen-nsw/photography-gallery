@@ -59,7 +59,7 @@ function FileDetails({ file, onGenreChange, onAltTextChange }) {
 
 export default function DropzoneButton() {
   const theme = useMantineTheme();
-  const isSmallScreen = useMediaQuery("(max-width: 40em)");
+  const isSmallScreen = useMediaQuery("(max-width: 48em)");
   const openRef = useRef(null);
   const fileIcon = <IconFile />;
 

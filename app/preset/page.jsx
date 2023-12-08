@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import Image from 'next/image';
-import { Text, Button } from '@mantine/core';
+import Link from 'next/link';
+import { Button, Modal, List } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { IconArrowRight } from '@tabler/icons-react';
 import { Accordion } from '@mantine/core';
 
@@ -58,20 +60,44 @@ const items = faqs.map((item) => (
   </Accordion.Item>
 ));
 
+const termsAndConditionsContent = (
+  <div className="px-3 md:px-6">
+    <List type="ordered">
+      <List.Item className="font-semibold">1. License and Use</List.Item>
+      <p className="mb-2"> Purchasing these presets grants you a non-exclusive, non-transferable license to use them for personal and professional purposes. Redistribution, resale, or repackaging of these presets is strictly prohibited.</p>
+      <List.Item className="font-semibold">2. No Guarantee of Results</List.Item>
+      <p className="mb-2"> While these presets have been rigorously tested, we cannot guarantee that they will suit every image or style. The effectiveness of a preset may vary based on the original image&apos;s characteristics.</p>
+      <List.Item className="font-semibold">3. Refund Policy</List.Item>
+      <p className="mb-2"> Due to the digital nature of this product, all sales are final and non-refundable. Please review the product description carefully before purchase.</p>
+      <List.Item className="font-semibold">4. Support and Queries</List.Item>
+      <p className="mb-2"> For any questions or support needs, please contact our customer service. We endeavor to provide assistance but do not guarantee resolution of all issues.</p>
+      <List.Item className="font-semibold">5. Updates</List.Item>
+      <p className="mb-2"> Future updates to these presets, if any, will be provided to purchasers free of charge.</p>
+      <List.Item className="font-semibold">6. Disclaimer</List.Item>
+      <p className="mb-2"> We are not responsible for any direct, indirect, incidental, or consequential damages that may arise from the use of these presets.</p>
+      <List.Item className="font-semibold">7. Acceptance of Terms</List.Item>
+      <p className="mb-4"> By purchasing this Lightroom Preset Bundle, you acknowledge that you have read, understood, and agreed to these terms and conditions.</p>
+    </List>
+  </div>
+)
+  
+
 const Presets = () => {
-  const [activeImage, setActiveImage] = useState("https://storage.googleapis.com/andrew-gallery-photos/Preset/26-min.jpg");
+  const [activeImage, setActiveImage] = useState(imagesUrl[0]);
+  const [opened, { open, close }] = useDisclosure(false);
+
   return (
     <div className="homepage-container mt-6 md:mt-8">
       <div className="flex flex-col md:flex-row -mx-4">
         {/* Left Section */}
-        <div className="md:flex-1 px-4 w-50">
-          <div className="sticky top-9">
+        <div className="md:flex-1 px-7 w-50">
+          <div className="static md:sticky md:top-9">
             {imagesUrl.map(
               (img) =>
                 activeImage === img && (
                   <div
                     key={img}
-                    className="rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
+                    className="rounded-sm bg-gray-100 mb-4 flex items-center justify-center"
                   >
                     <Image 
                       src={img}
@@ -108,12 +134,12 @@ const Presets = () => {
         </div>
 
         {/* Right Section */}
-        <div className="mt-4 md:mt-0 md:flex-1 px-4">
+        <div className="mt-4 md:mt-0 md:flex-1 px-7">
           <h2 className="mb-2 leading-tight font-bold text-gray-800 text-2xl md:text-3xl">
             101 All in One Lightroom Presets
           </h2>
 
-          <div className="flex items-center space-x-4 my-4">
+          <div className="flex items-center space-x-4 my-4 md:my-6">
             <div>
               <span className="text-gray-700 mr-1 mt-1">$</span>
               <span className="font-bold text-gray-700 text-4xl">1</span>
@@ -124,13 +150,29 @@ const Presets = () => {
             </div>
           </div>
 
-          <p className="text-gray-500 text-base">
-          This 101 Lightroom preset bundle, inspired by Crella, offers a wide range of unique tones for all your photography needs. Thoroughly tested and quality-assured, these popular presets are user-approved and require minimal tweaking, fitting a variety of photos seamlessly. This comprehensive collection eliminates the need for additional presets.
+          <p className="text-gray-500">
+            This 101 Lightroom preset bundle, inspired by Crella, offers a wide range of unique tones for all your photography needs. Thoroughly tested and quality-assured, these popular presets are user-approved and require minimal tweaking, fitting a variety of photos seamlessly. This comprehensive collection eliminates the need for additional presets.
           </p>
 
-          <Button 
+          <p onClick={open} className="mt-3 text-gray-400 text-sm underline hover:cursor-pointer">Terms and Conditions</p>
+
+          <Modal
+            opened={opened}
+            onClose={close}
+            size="xl"
+            title="Terms and Conditions"
+            overlayProps={{
+              backgroundOpacity: 0.55,
+              blur: 3,
+            }}
+          >
+            {termsAndConditionsContent}
+          </Modal>
+
+          <Button
+            component={Link} href="/preset/checkout"
             fullWidth 
-            className="my-4"
+            className="my-4 md:my-6"
             rightSection={<IconArrowRight size={14} className="arrow-rotate" />} 
           >
             Proceed to Payment
