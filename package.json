@@ -15,7 +15,6 @@
     "@mantine/dropzone": "^7.2.2",
     "@mantine/form": "^7.3.0",
     "@mantine/hooks": "^7.2.2",
-    "@mantine/notifications": "^7.3.0",
     "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.2.0",
     "@tabler/core": "^1.0.0-beta20",
