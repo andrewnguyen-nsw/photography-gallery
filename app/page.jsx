@@ -3,6 +3,7 @@
 import { Group, Button, Grid, SimpleGrid } from "@mantine/core";
 import GenresCard from "@components/GenresCard/GenresCard";
 import Image from "next/image";
+import Link from "next/link";
 import heroSectionBackgroundLarge from "/public/assets/images/HeroSection-2.jpg";
 import heroSectionBackgroundMobile from "/public/assets/images/HeroSection.jpg";
 import aboutMe from "/public/assets/images/Avatar_Veu.png";
@@ -25,8 +26,8 @@ export default function Home() {
           through my lens. Explore my work and get inspired.
         </p>
         <Group className="mt-5">
-          <Button variant="filled">Explore</Button>
-          <Button variant="outline">About me</Button>
+          <Button component={Link} href="/gallery" variant="filled">Explore</Button>
+          <Button component={Link} href="#about-me" variant="outline">About me</Button>
         </Group>
         <Image
           src={heroSectionBackgroundLarge}
@@ -84,7 +85,7 @@ export default function Home() {
       </section>
 
       {/* // ABOUT ME SECTION ----------------------------------------------------------------------- */}
-      <section className="homepage-container my-10 md:my-20">
+      <section id="about-me" className="homepage-container my-10 md:my-20">
         <Group justify="space-between">
           <Image
             src={aboutMe}
@@ -101,8 +102,8 @@ export default function Home() {
               Hi there, I am Andrew (aka Thai Minh Nguyen), a photographer based in Ho Chi Minh City, Vietnam. I have been passionate about photography since I was a kid. I love capturing the beauty of the world through my lens and sharing it with others. I hope you enjoy my work as much as I enjoy creating it.
             </p>
             <Group className="mt-5">
-              <Button variant="filled">See my work</Button>
-              <Button variant="outline">Follow me on Instagram</Button>
+              <Button component={Link} href="/gallery" variant="filled">See my work</Button>
+              <Button component={Link} href="https://www.instagram.com/eke.minh/" rel="noopener noreferrer" target="_blank" variant="outline">Follow me on Instagram</Button>
             </Group>
           </div>
         </Group>

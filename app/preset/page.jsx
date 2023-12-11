@@ -90,7 +90,7 @@ const Presets = () => {
     <div className="homepage-container mt-6 md:mt-8">
       <div className="flex flex-col md:flex-row -mx-4">
         {/* Left Section */}
-        <div className="md:flex-1 px-7 w-50">
+        <div className="md:flex-1 px-8 w-50">
           <div className="static md:sticky md:top-9">
             {imagesUrl.map(
               (img) =>
@@ -134,13 +134,13 @@ const Presets = () => {
         </div>
 
         {/* Right Section */}
-        <div className="mt-4 md:mt-0 md:flex-1 px-7">
+        <div className="mt-4 md:mt-0 md:flex-1 px-8">
           <h2 className="mb-2 leading-tight font-bold text-gray-800 text-2xl md:text-3xl">
-            101 All in One Lightroom Presets
+            101 <span className="highlight-hover">All in One</span> Lightroom Presets
           </h2>
 
           <div className="flex items-center space-x-4 my-4 md:my-6">
-            <div>
+            <div className="highlight-hover">
               <span className="text-gray-700 mr-1 mt-1">$</span>
               <span className="font-bold text-gray-700 text-4xl">1</span>
             </div>
@@ -154,7 +154,7 @@ const Presets = () => {
             This 101 Lightroom preset bundle, inspired by Crella, offers a wide range of unique tones for all your photography needs. Thoroughly tested and quality-assured, these popular presets are user-approved and require minimal tweaking, fitting a variety of photos seamlessly. This comprehensive collection eliminates the need for additional presets.
           </p>
 
-          <p onClick={open} className="mt-3 text-gray-400 text-sm underline hover:cursor-pointer">Terms and Conditions</p>
+          <span onClick={open} className="inline-block mt-3 text-gray-400 text-sm underline hover:cursor-pointer">Terms and Conditions</span>
 
           <Modal
             opened={opened}

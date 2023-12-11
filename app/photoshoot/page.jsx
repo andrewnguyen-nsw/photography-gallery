@@ -74,13 +74,13 @@ const Photoshoot = () => {
       <h2 className="h2_serif text-center ">Want stunning photos?</h2>
 
       <Grid className="mb-20 p-2">
-        <Grid.Col span={{base:12, md:6, lg:4}}>
+        <Grid.Col span={{base:12, sm:6, lg:4}}>
           <PhotoshootPackageCard icon={iconCamera} title="Starter package" desc={starterList} />
         </Grid.Col>
-        <Grid.Col span={{base:12, md:6, lg:4}}>
+        <Grid.Col span={{base:12, sm:6, lg:4}}>
           <PhotoshootPackageCard icon={iconCameraPlus} title="Basic package" desc={basicList} />
         </Grid.Col>
-        <Grid.Col span={{base:12, md:6, lg:4}}>
+        <Grid.Col span={{base:12, sm:6, lg:4}}>
           <PhotoshootPackageCard icon={iconCameraStar} title="Premium package" desc={premiumList} />
         </Grid.Col>
       </Grid>
