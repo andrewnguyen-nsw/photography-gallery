@@ -1,4 +1,5 @@
 import { Group, Card, Overlay, Button, Text } from "@mantine/core";
+import Link from 'next/link';
 import classes from "./GenresCard.module.css";
 
 export default function GenresCard({title, description, image}) {
@@ -16,6 +17,7 @@ export default function GenresCard({title, description, image}) {
         </Text>
 
         <Button
+          component={Link} href="/gallery"
           className={classes.action}
           variant="white"
           color="dark"

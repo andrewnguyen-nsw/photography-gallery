@@ -1,6 +1,6 @@
 .carousel {
-  margin-top: rem(80);
-  margin-bottom: rem(80);
+  margin-top: rem(60);
+  margin-bottom: rem(60);
 
   @mixin hover {
     .carouselControls {
@@ -26,5 +26,12 @@
 
   &[data-active] {
     width: rem(16px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .carousel {
+    margin-top: rem(20);
+    margin-bottom: rem(20);
   }
 }

@@ -24,7 +24,7 @@ const links = [
   { link: "/", label: "Home" },
   { link: "/gallery", label: "Gallery" },
   {
-    link: "",
+    link: "javascript: void(0)", // a link that does nothing
     label: "Services",
     links: [
       { link: "/photoshoot", label: "Photoshoot" },
@@ -158,16 +158,22 @@ const Nav = () => {
             overlayProps={{ backgroundOpacity: 0.5, blur: 1 }}
           >
             <Stack gap={10}>{items}</Stack>
-            <Button
-              fullWidth
-              variant="filled"
-              styles={{
-                label: { fontWeight: 400 },
-              }}
-              className="mt-6"
-            >
-              Login
-            </Button>
+            <>
+              {providers && Object.values(providers).map((provider) => (
+                <Button
+                  fullWidth
+                  variant="filled"
+                  styles={{
+                    label: { fontWeight: 400 },
+                  }}
+                  className="mt-6"
+                  key={provider.name}
+                  onClick={() => {signIn(provider.id)}}
+                >
+                  Login
+                </Button>
+              ))}
+            </>
           </Drawer>
         </div>
       </Container>

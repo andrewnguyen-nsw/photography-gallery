@@ -41,3 +41,11 @@
 .button:hover .arrowRotate {
   transform: rotate(-90deg);
 }
+
+@media screen and (max-width: 768px) {
+  .card {
+    padding: var(--mantine-spacing-xl);
+    padding-left: calc(var(--mantine-spacing-md) * 2);
+    min-height: 25px;
+  }
+}

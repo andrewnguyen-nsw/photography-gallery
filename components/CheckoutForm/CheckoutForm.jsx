@@ -2,16 +2,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSession } from 'next-auth/react';
 import {
   PaymentElement,
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
 import Image from 'next/image';
-import { Grid, Flex, Group, Divider, Input, TextInput, Button, Loader, Tooltip, Notification, rem } from "@mantine/core";
+import { Grid, Flex, Group, Divider, Input, TextInput, Button, Loader, Tooltip, Space, Notification, rem } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useForm } from '@mantine/form';
-import { IconExclamationCircle, IconAlertTriangleFilled, IconCreditCardPay } from '@tabler/icons-react';
+import { IconExclamationCircle, IconAlertTriangleFilled, IconCash } from '@tabler/icons-react';
 import PresetThumbnail from "/public/assets/images/101PresetsThumbnail.jpg";
 import Success from "@components/PaymentStatus/Success";
 import Processing from "@components/PaymentStatus/Processing";
@@ -21,21 +22,50 @@ export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
+  const { data: session } = useSession();
+
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [productId, setProductId] = useState(null);
 
   const isSmallScreen = useMediaQuery("(max-width: 48em)");
 
   const form = useForm({
     initialValues: {
-      email: '',
+      email: session?.user.email,
     },
 
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
     },
   });
+
+  const retrieveProductId = async () => {
+    try {
+      const response = await fetch('/api/retrieve-product-id');
+      const product = await response.json();
+      return product._id;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const insertIntoOrderModel = async () => {
+    try {
+      console.log("userId: ", session?.user.id, "productId: ", productId);
+      const response = await fetch('/api/insert-into-order-model', {
+        method: 'POST',
+        // headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: session?.user.id,
+          productId: await retrieveProductId(),
+        }),
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     if (!stripe) {
@@ -50,10 +80,13 @@ export default function CheckoutForm() {
       return;
     }
 
+    
+
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
       switch (paymentIntent.status) {
         case "succeeded":
           setMessage("succeeded");
+          insertIntoOrderModel();
           break;
         case "processing":
           setMessage("processing");
@@ -120,7 +153,7 @@ export default function CheckoutForm() {
         <form id="payment-form" onSubmit={form.onSubmit(handleSubmit)} className="mt-4">
           <h2 className="text-xl font-bold">Payment method</h2>
           <TextInput
-            required
+            disabled
             label="Email"
             placeholder="your@email.com"
             className="mt-4 mb-2"
@@ -144,13 +177,8 @@ export default function CheckoutForm() {
               <p className="">{message}</p>
             </div>
           )}
-          {/* <button disabled={isLoading || !stripe || !elements} id="submit">
-            <span id="button-text">
-              {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-            </span>
-          </button> */}
-          <Button variant="filled" fullWidth={isSmallScreen} disabled={isLoading || !stripe || !elements} rightSection={<IconCreditCardPay size={14} /> }type="submit" className="mt-5">
-            {isLoading ? <Loader size="xs"/> : "Pay now"}
+          <Button variant="filled" fullWidth={isSmallScreen} disabled={isLoading || !stripe || !elements} rightSection={<IconCash size={14} /> } type="submit" className="mt-5">
+            {isLoading ? <><Space w="md" /><Loader size="xs"/><Space w="md" /></> : "Pay now"}
           </Button>
           {/* Show any error or success messages */}
           {/* {message && notifications.show({

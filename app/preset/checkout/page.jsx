@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSession, signIn, getProviders } from 'next-auth/react';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
@@ -8,9 +9,27 @@ import CheckoutForm from "@components/CheckoutForm/CheckoutForm";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
-const stripePromise = loadStripe(`pk_test_51NvnnuB5LtC1NaASmv7doGyeEz7sSQV0VeBMz4HALdobXMpzyHFh9fT2lK9Z82A7GZRD8hf8i8K1FCEB6CzZeUBI00VGei0HVJ`);
+const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_KEY}`);
 
 const Checkout = () => {
+  const { data: session } = useSession();
+  const [providers, setProviders] = useState(null);
+
+  useEffect(() => {
+    const setUpProviders = async () => {
+      const response = await getProviders();
+      setProviders(response);
+    }
+    setUpProviders();
+  }, [])
+  
+  useEffect(() => {
+    if (!session && providers) {
+      const google = providers && Object.values(providers)[0].id;
+      signIn(google);
+    }
+  }, [session, providers])
+
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {

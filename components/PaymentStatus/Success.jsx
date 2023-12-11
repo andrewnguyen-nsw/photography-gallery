@@ -29,7 +29,7 @@ const Success = () => {
         <p className='mt-2 text-center'>Your download will begin shortly. If it doesn&apos;t start automatically, please click the button.</p>
         <Button variant='light' component={Link} href={link1} fullWidth className='my-4' leftSection={<IconDownload size={18}/>}>Download Presets</Button>
         <p className='text-sm'>A detailed order receipt is on its way to your email.</p>
-        <Divider my="md"/>
+        <Divider my="sm" styles={{width: "100%"}}/>
         <p className='text-sm text-gray-500'>Having trouble with the download? No worries, simply use <Link href={link2} className='underline'> this alternative link</Link>.</p>
       </div>
     </Center>
