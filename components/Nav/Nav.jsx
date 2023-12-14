@@ -29,7 +29,7 @@ const links = [
     links: [
       { link: "/photoshoot", label: "Photoshoot" },
       { link: "/preset", label: "Preset" },
-      { link: "/tour-guider", label: "Tour Guider" },
+      { link: "/private-tour", label: "Private Tour" },
     ],
   },
   { link: "/about", label: "About" },
@@ -89,8 +89,31 @@ const Nav = () => {
     );
   });
 
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
+      setShow(false); 
+    } else { // if scroll up show the navbar
+      setShow(true);  
+    }
+
+    // remember current page location to use in the next move
+    setLastScrollY(window.scrollY); 
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+
+    // cleanup function
+    return () => {
+       window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [lastScrollY]);
+
   return (
-    <header className={classes.header}>
+    <header className={`active ${show && 'hidden'} ${classes.header}`}>
       <Container size="lg">
         <div className={classes.inner}>
           {/* Large screen */}
