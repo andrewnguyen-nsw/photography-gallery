@@ -1,20 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  PaymentElement,
-  useStripe,
-  useElements
-} from "@stripe/react-stripe-js";
 import { useSession } from 'next-auth/react';
-import { Grid, Flex, Group, Divider, Input, TextInput, Button, Loader, Tooltip, Space, Notification, rem } from "@mantine/core";
-import { useForm } from '@mantine/form';
-import { IconExclamationCircle, IconAlertTriangleFilled, IconCash } from '@tabler/icons-react';
+import { Grid } from "@mantine/core";
+
 import Success from "@components/PaymentStatus/Success";
 import Processing from "@components/PaymentStatus/Processing";
 import Error from "@components/PaymentStatus/Error";
 import OrderDetail from '@components/OrderDetail/OrderDetail';
 import PaymentForm from '@components/PaymentForm/PaymentForm';
+
 import useStripeElements from "@hooks/useStripeElements";
 import insertIntoOrderModel from "@utils/payment";
 
@@ -57,7 +52,7 @@ export default function CheckoutForm() {
           break;
       }
     });
-  }, [stripe]);
+  }, [stripe, session, productId]);
 
   if (message === "succeeded") return <Success />;
   if (message === "processing") return <Processing />;

@@ -9,7 +9,7 @@
 
 html {
   overflow-y: auto;
-  scrollbar-gutter: stable;
+  scrollbar-gutter: stable; /* reserve space for scroll bar */
 }
 
 .app {

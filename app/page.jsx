@@ -99,7 +99,7 @@ export default function Home() {
               <span className="highlight-hover">Who am I?</span>
             </h2>
             <p className="desc">
-            Hello! I'm Andrew (also known as Thai Minh Nguyen), a photographer based in Sydney, Australia. My journey in photography began around early 2021. Despite being relatively new to this art, my spirit is constantly on the move, brimming with eagerness to learn and grow. Alongside studying for my Bachelor of ICT, photography has blossomed into both a cherished hobby and a side hustle for me. Additionally, I also work as a private tour guide, which allows me to explore and share the diverse and captivating sights around me. I am thrilled to present my work here and hope you find as much joy in it as I do in creating it.
+            Hello! I&apos;m Andrew (also known as Thai Minh Nguyen), a photographer based in Sydney, Australia. My journey in photography began around early 2021. Despite being relatively new to this art, my spirit is constantly on the move, brimming with eagerness to learn and grow. Alongside studying for my Bachelor of ICT, photography has blossomed into both a cherished hobby and a side hustle for me. Additionally, I also work as a private tour guide, which allows me to explore and share the diverse and captivating sights around me. I am thrilled to present my work here and hope you find as much joy in it as I do in creating it.
             </p>
             <Group className="mt-5">
               <Button component={Link} href="/gallery" variant="filled">See my work</Button>
