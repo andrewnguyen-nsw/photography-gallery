@@ -36,7 +36,7 @@ const Checkout = () => {
     const fetchPaymentIntent = async () => {
       try {
         // Create PaymentIntent as soon as the page loads
-        const res = await fetch("/api/create-payment-intent", {
+        const res = await fetch("/api/payment/create-payment-intent", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           // body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),

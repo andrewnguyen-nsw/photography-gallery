@@ -29,7 +29,7 @@ const links = [
     links: [
       { link: "/photoshoot", label: "Photoshoot" },
       { link: "/preset", label: "Preset" },
-      { link: "/tour-guider", label: "Tour Guider" },
+      { link: "/private-tour", label: "Private Tour" },
     ],
   },
   { link: "/about", label: "About" },
@@ -72,7 +72,7 @@ const Nav = () => {
               <div className="flex justify-start">
                 <Center>
                   <span className={classes.linkLabel}>{link.label}</span>
-                  <IconChevronDown size="0.9rem" stroke={1.5} />
+                  <IconChevronDown size="0.9rem" stroke={1.5} className="arrow-rotate-180"/>
                 </Center>
               </div>
             </a>
@@ -89,8 +89,34 @@ const Nav = () => {
     );
   });
 
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Hide Navbar when scroll down & Show when scroll up
+  const controlNavbar = () => {
+    if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
+      console.log(window.scrollY, lastScrollY);
+      setShow(false); 
+    } else { // if scroll up show the navbar
+      setShow(true);  
+    }
+
+    // remember current page location to use in the next move
+    setLastScrollY(window.scrollY); 
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+    console.log(show);
+
+    // cleanup function
+    return () => {
+       window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [lastScrollY]);
+
   return (
-    <header className={classes.header}>
+    <header className={`sticky z-20 bg-white backdrop-filter backdrop-blur-lg bg-opacity-80 ${show ? 'top-0' : ''} ${classes.header}`}>
       <Container size="lg">
         <div className={classes.inner}>
           {/* Large screen */}
@@ -110,7 +136,7 @@ const Nav = () => {
             {(session?.user) ? (
               <>
                 <Button
-                  variant="subtle"
+                  variant="white"
                   styles={{
                     label: { fontWeight: 400 },
                   }}
@@ -132,7 +158,7 @@ const Nav = () => {
               <>
                 {providers && Object.values(providers).map((provider) => (
                   <Button
-                    variant="subtle"
+                    variant="white"
                     styles={{
                       label: { fontWeight: 400 },
                     }}
