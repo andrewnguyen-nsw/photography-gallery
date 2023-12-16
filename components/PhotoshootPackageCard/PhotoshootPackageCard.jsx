@@ -20,7 +20,7 @@ export default function PhotoshootPackageCard({ icon, title, desc }) {
       <Button 
         fullWidth 
         color="gray.7" 
-        rightSection={<IconArrowRight size={14} className="arrow-rotate" />} 
+        rightSection={<IconArrowRight size={14} className="arrow-rotate-90" />} 
       >
         Book now
       </Button>

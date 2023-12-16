@@ -41,7 +41,7 @@ html {
 }
 
 .desc {
-  @apply mt-5 text-sm font-roboto font-normal text-neutral-700 max-w-2xl sm:text-base;
+  @apply mt-5 text-sm font-roboto font-normal text-neutral-500 max-w-2xl sm:text-base;
 }
 
 .highlight-hover {
@@ -77,12 +77,16 @@ html {
   @apply flex justify-between items-center;
 }
 
-.arrow-rotate {
+.arrow-rotate-90, .arrow-rotate-180 {
   transition: transform 0.25s ease-in-out;
 }
 
-.mantine-Button-root:hover .arrow-rotate {
+.mantine-Button-root:hover .arrow-rotate-90 {
   transform: rotate(-90deg);
+}
+
+a:hover .arrow-rotate-180 {
+  transform: rotate(-180deg);
 }
 
 /* Masonry  */

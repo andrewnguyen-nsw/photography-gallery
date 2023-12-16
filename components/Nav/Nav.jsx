@@ -72,7 +72,7 @@ const Nav = () => {
               <div className="flex justify-start">
                 <Center>
                   <span className={classes.linkLabel}>{link.label}</span>
-                  <IconChevronDown size="0.9rem" stroke={1.5} />
+                  <IconChevronDown size="0.9rem" stroke={1.5} className="arrow-rotate-180"/>
                 </Center>
               </div>
             </a>
@@ -136,7 +136,7 @@ const Nav = () => {
             {(session?.user) ? (
               <>
                 <Button
-                  variant="subtle"
+                  variant="white"
                   styles={{
                     label: { fontWeight: 400 },
                   }}
@@ -158,7 +158,7 @@ const Nav = () => {
               <>
                 {providers && Object.values(providers).map((provider) => (
                   <Button
-                    variant="subtle"
+                    variant="white"
                     styles={{
                       label: { fontWeight: 400 },
                     }}

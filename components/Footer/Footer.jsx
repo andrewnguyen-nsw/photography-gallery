@@ -1,7 +1,7 @@
 "use client";
 
 import { Anchor, Group, ActionIcon, rem } from '@mantine/core';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
+import { IconBrandFacebook, IconBrandLinkedin, IconBrandInstagram, IconBrandMessenger } from '@tabler/icons-react';
 import classes from './Footer.module.css';
 import Image from "next/image";
 import AndrewNguyenLogo from "@public/assets/images/logo.png";
@@ -42,13 +42,24 @@ export default function Footer() {
 
         <Group gap="xs" justify="flex-end" wrap="nowrap">
           <ActionIcon size="lg" variant="default" radius="xl">
-            <IconBrandTwitter style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+            <Anchor href="https://www.facebook.com/ekeminhmu/" target='_blank'>
+              <IconBrandFacebook style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+            </Anchor>
           </ActionIcon>
           <ActionIcon size="lg" variant="default" radius="xl">
-            <IconBrandYoutube style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+            <Anchor href="https://www.m.me/ekeminhmu/" target='_blank'>
+              <IconBrandMessenger style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+            </Anchor>
           </ActionIcon>
           <ActionIcon size="lg" variant="default" radius="xl">
-            <IconBrandInstagram style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+            <Anchor href="https://www.instagram.com/eke.minh/" target='_blank'>
+              <IconBrandInstagram style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+            </Anchor>
+          </ActionIcon>
+          <ActionIcon size="lg" variant="default" radius="xl">
+            <Anchor href="https://www.linkedin.com/in/andrewnguyen-nsw/" target='_blank'>
+              <IconBrandLinkedin style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+            </Anchor>
           </ActionIcon>
         </Group>
       </div>

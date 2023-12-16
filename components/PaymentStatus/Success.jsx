@@ -9,8 +9,8 @@ import { useRouter } from 'next/navigation';
 import { IconCircleCheck, IconDownload } from '@tabler/icons-react';
 import partyPopper from '/public/assets/icons/party-popper.svg';
 
-const link1 = 'https://drive.usercontent.google.com/download?id=1bVmM5ZypYS4vis1rOA6di8ydyKv8TBLV&export=download&authuser=1&confirm=t&uuid=30098307-003c-49f5-bdef-602e74d722f2&at=APZUnTVa7cKRjHtaJ86Vuk1beiOv:1701919850995';
-const link2 = 'https://uc2894a694534046f9f8e73fdd4f.dl.dropboxusercontent.com/cd/0/get/CI-7xjmctmt9F6dDjjXgp0ZhJvuwTylCZifX5ej4nzyisU6a0hyojYxfpMkwSfWC11zP0xA1_oraKFGmmmQqBsK4wx3_K-o3svCMTAsmgGtztrPUCFwBdb1dV_Zkuc8a4ZPAWrz8U2hEElS63P7wJ9CdcEAri0UtHZd5zATnhksRYO4KjnKLhuJA2WKKYbDWMng/file#'
+const link1 = 'https://storage.googleapis.com/andrew-gallery-photos/%5BCrella%5D%20All%20in%20one%20-%20101%20Presets.zip'
+const link2 = 'https://drive.usercontent.google.com/download?id=1bVmM5ZypYS4vis1rOA6di8ydyKv8TBLV&export=download&authuser=1&confirm=t&uuid=30098307-003c-49f5-bdef-602e74d722f2&at=APZUnTVa7cKRjHtaJ86Vuk1beiOv:1701919850995';
 
 const Success = () => {
   const router = useRouter();

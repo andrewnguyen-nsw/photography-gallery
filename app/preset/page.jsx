@@ -173,7 +173,7 @@ const Presets = () => {
             component={Link} href="/preset/checkout"
             fullWidth 
             className="my-4 md:my-6"
-            rightSection={<IconArrowRight size={14} className="arrow-rotate" />} 
+            rightSection={<IconArrowRight size={14} className="arrow-rotate-90" />} 
           >
             Proceed to Payment
           </Button>
