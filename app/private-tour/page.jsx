@@ -1,6 +1,5 @@
 import { Group, Text, Button, Container } from '@mantine/core';
 import Link from 'next/link';
-import classes from './HeroText.module.css';
 
 const PrivateTour = () => {
   return (
