@@ -7,6 +7,12 @@ import Image from 'next/image';
 import Carousel from "@components/Carousel/Carousel";
 import Testimonials from "@components/Testimonials/Testimonials";
 import leftQuoteIcon from "/public/assets/icons/left-quote.png";
+import dynamic from 'next/dynamic';
+
+const ContactForm = dynamic(
+  () => import('@components/ContactForm/ContactForm'),
+  { ssr: false }
+);
 
 const Photoshoot = () => {
   const iconCamera = <IconCamera style={{ width: rem(22), height: rem(22) }} stroke={1.5} />
@@ -67,40 +73,46 @@ const Photoshoot = () => {
   )
 
   return (
-    <div className="homepage-container">
-      <Carousel/>
+    <>
+      <div className="homepage-container">
+        <Carousel/>
 
-      <h2 lang="vi" className="h2_text text-center">Book đi chờ chi</h2>
-      <h2 className="h2_serif text-center ">Want stunning photos?</h2>
+        <h2 lang="vi" className="h2_text text-center">Book đi chờ chi</h2>
+        <h2 className="h2_serif text-center ">Want stunning photos?</h2>
 
-      <Grid className="mb-20 p-2">
-        <Grid.Col span={{base:12, sm:6, lg:4}}>
-          <PhotoshootPackageCard icon={iconCamera} title="Starter package" desc={starterList} />
-        </Grid.Col>
-        <Grid.Col span={{base:12, sm:6, lg:4}}>
-          <PhotoshootPackageCard icon={iconCameraPlus} title="Basic package" desc={basicList} />
-        </Grid.Col>
-        <Grid.Col span={{base:12, sm:6, lg:4}}>
-          <PhotoshootPackageCard icon={iconCameraStar} title="Premium package" desc={premiumList} />
-        </Grid.Col>
-      </Grid>
+        <Grid className="mb-20 p-2">
+          <Grid.Col span={{base:12, sm:6, lg:4}}>
+            <PhotoshootPackageCard icon={iconCamera} title="Starter package" desc={starterList} />
+          </Grid.Col>
+          <Grid.Col span={{base:12, sm:6, lg:4}}>
+            <PhotoshootPackageCard icon={iconCameraPlus} title="Basic package" desc={basicList} />
+          </Grid.Col>
+          <Grid.Col span={{base:12, sm:6, lg:4}}>
+            <PhotoshootPackageCard icon={iconCameraStar} title="Premium package" desc={premiumList} />
+          </Grid.Col>
+        </Grid>
 
-      <h2 lang="vi" className="h2_text text-center">Thiên hạ nói gì?</h2>
-      <h2 className="h2_serif text-center ">Happy Clients</h2>
+        <h2 lang="vi" className="h2_text text-center">Thiên hạ nói gì?</h2>
+        <h2 className="h2_serif text-center ">Happy Clients</h2>
 
-      <Grid>
-        <Grid.Col span={{base:3, md:2}} order={{ base: 2, md: 1 }} className="mb-10">
-          <Image src={leftQuoteIcon} width={140} className="opacity-10 pt-6 sm:pt-8 lg:pt-10" alt="left-quote"/>
-        </Grid.Col>
-        <Grid.Col span={{base:12, md:8}} order={{ base: 1, md: 2 }} className="mb-10">
-          <Testimonials />
-        </Grid.Col>
-        <Grid.Col span={{base:3, md:2}} order={{ base: 3, md: 3 }} className="mb-10 flex justify-end items-end">
-          <Image src={leftQuoteIcon} width={140} className="opacity-10 rotate-180 pb-6 sm:pb-8 lg:pb-10" alt="left-quote"/>
-        </Grid.Col>
-      </Grid>
+        <Grid>
+          <Grid.Col span={{base:3, md:2}} order={{ base: 2, md: 1 }} className="mb-10">
+            <Image src={leftQuoteIcon} width={140} className="opacity-10 pt-6 sm:pt-8 lg:pt-10" alt="left-quote"/>
+          </Grid.Col>
+          <Grid.Col span={{base:12, md:8}} order={{ base: 1, md: 2 }} className="mb-10">
+            <Testimonials />
+          </Grid.Col>
+          <Grid.Col span={{base:3, md:2}} order={{ base: 3, md: 3 }} className="mb-10 flex justify-end items-end">
+            <Image src={leftQuoteIcon} width={140} className="opacity-10 rotate-180 pb-6 sm:pb-8 lg:pb-10" alt="left-quote"/>
+          </Grid.Col>
+        </Grid>
 
-    </div>
+      </div>
+      
+      <section id="contact">
+        <ContactForm/>
+      </section>
+    </>
   )
 }
 

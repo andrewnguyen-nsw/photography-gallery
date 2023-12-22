@@ -1,6 +1,7 @@
 import React from 'react';
+import Image from 'next/image';
 
-const Testimonial = ({ saying, name, city }) => {
+const Testimonial = ({ saying, name, city, imgSrc }) => {
   return (
     <section className="pt-6 bg-white sm:pt-8 lg:pt-10">
       <div className="px-2 mx-auto max-w-7xl sm:px-4 lg:px-6">
@@ -17,8 +18,7 @@ const Testimonial = ({ saying, name, city }) => {
           </div>
           <div className="mt-8">
             <div className="flex items-center">
-              <img className="flex-shrink-0 object-cover w-10 h-10 rounded-full" src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/8/avatar-1.jpg" alt="" />
-              {/* <Image width={24} height={24} className="flex-shrink-0 object-cover w-10 h-10 rounded-full" src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/8/avatar-1.jpg" alt="" /> */}
+              <Image width={45} height={45} className="flex-shrink-0 object-cover rounded-full" src={imgSrc} alt="A woman" />
               <div className="ml-3">
                 <p className="text-base font-semibold text-neutral-800 truncate">{name}</p>
                 <p className="text-base text-neutral-500 truncate">{city}</p>
