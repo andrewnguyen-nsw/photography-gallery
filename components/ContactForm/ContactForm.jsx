@@ -1,19 +1,27 @@
 'use client';
 
+import { useState } from 'react';
 import {
   TextInput,
   Textarea,
   Button,
   Group,
   Divider,
+  Space,
+  Loader
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import Link from 'next/link'
 import classes from './ContactForm.module.css';
 import { IconBrandMessenger } from '@tabler/icons-react'
 import { sendEmail } from './../../utils/sendEmail';
+import { set } from 'mongoose';
+import { partyPopper } from '/public/assets/icons/party-popper.svg';
 
 const ContactForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isEmailSent, setIsEmailSent] = useState(false);
+
   const form = useForm({
     initialValues: {
       email: '',
@@ -28,7 +36,14 @@ const ContactForm = () => {
 
   const handleSubmit = async (values) => {
     console.log(values);
-    await sendEmail(values);
+    setIsLoading(true);
+    const response = await sendEmail(values);
+    console.log(response);
+    if (response) {
+      form.reset();
+      setIsLoading(false);
+      setIsEmailSent(true);
+    }
   }
 
   return (
@@ -60,8 +75,12 @@ const ContactForm = () => {
               {...form.getInputProps('message')}
             />
 
-            <Group justify="flex-end" mt="md">
-              <Button type="submit">Send message</Button>
+
+            <Group justify={isEmailSent ? 'space-between' : 'flex-end'} mt="md">
+              {isEmailSent && <p className='italic text-sm'>Email sent successfully!</p>}
+              <Button type="submit" disabled={isLoading}>
+              {isLoading ? <><Space w="xl" /><Loader size="xs"/><Space w="xl" /></> : "Send message"}
+              </Button>
             </Group>
           </form>
         </div>
