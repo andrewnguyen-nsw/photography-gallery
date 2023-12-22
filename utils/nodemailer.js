@@ -2,14 +2,17 @@ import nodemailer from 'nodemailer';
 
 export const transporter = nodemailer.createTransport({
   service: 'gmail',
+  host: 'smtp.gmail.com',
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
+    type: "OAUTH2",
+    clientId: process.env.GOOGLE_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
+    accessToken: process.env.GOOGLE_ACCESS_TOKEN,
+    // pass: process.env.EMAIL_PASSWORD,
   },
-
-  // host: process.env.EMAIL_HOST,
-  // port: process.env.EMAIL_PORT,
-  // secure: false,
 });
 
 export const mailOptions = {
