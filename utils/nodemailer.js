@@ -16,8 +16,6 @@ export const transporter = nodemailer.createTransport({
   },
 });
 
-console.log(process.env.GOOGLE_ID, process.env.GOOGLE_CLIENT_SECRET, process.env.GOOGLE_REFRESH_TOKEN, process.env.GOOGLE_ACCESS_TOKEN);
-
 export const mailOptions = {
   from: process.env.EMAIL_USER,
   to: process.env.EMAIL_USER
