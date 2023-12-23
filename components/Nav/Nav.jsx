@@ -24,7 +24,7 @@ const links = [
   { link: "/", label: "Home" },
   { link: "/gallery", label: "Gallery" },
   {
-    link: "javascript: void(0)", // a link that does nothing
+    link: "#", // a link that does nothing
     label: "Services",
     links: [
       { link: "/photoshoot", label: "Photoshoot" },
