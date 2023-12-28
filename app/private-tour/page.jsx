@@ -1,5 +1,7 @@
 "use client";
 
+import { CldImage } from "next-cloudinary"
+
 import { Group, Button } from '@mantine/core';
 import HorizontalScrollCarousel from '@components/HorizontalScrollCarousel/HorizontalScrollCarousel';
 import AboutTheTour from '@components/AboutTheTour/AboutTheTour';

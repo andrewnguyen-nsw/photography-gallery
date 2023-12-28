@@ -2,11 +2,12 @@ import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
 import Image from 'next/image'
 
-import tour01 from '@public/assets/images/tour01.jpg';
-import tour02 from '@public/assets/images/tour02.jpg';
-import tour03 from '@public/assets/images/tour03.jpg';
-import tour04 from '@public/assets/images/tour04.jpg';
-import tour05 from '@public/assets/images/tour05.jpg';
+import PLinh01 from '@public/assets/images/PLinh01.jpg';
+import PLinh02 from '@public/assets/images/PLinh02.jpg';
+import PLinh03 from '@public/assets/images/PLinh03.jpg';
+import ThuVu from '@public/assets/images/ThuVu.jpg';
+import HuyLe from '@public/assets/images/HuyLe.jpg';
+import TrieuVyTran from '@public/assets/images/TrieuVyTran.jpg';
 
 const HorizontalScrollCarousel = () => {
   const targetRef = useRef(null);
@@ -33,9 +34,9 @@ const Card = ({ card }) => {
   return (
     <div
       key={card.id}
-      className="group relative h-[400px] w-[600px] overflow-hidden bg-neutral-200"
+      className="group relative h-[400px] w-[600px] overflow-hidden bg-neutral-200 last:h-[400px] last:w-[266px]"
     >
-      <Image src={card.url} alt={card.title} height={600} className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-[1.009]"/>
+      <Image src={card.url} alt={card.title} height={400} quality={100} className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-[1.009]"/>
     </div>
   );
 };
@@ -44,38 +45,33 @@ export default HorizontalScrollCarousel;
 
 const cards = [
   {
-    url: tour01,
-    title: "Title 1",
+    url: PLinh01,
+    title: "Sydney Harbour view from Mrs Macquaire's Chair",
     id: 1,
   },
   {
-    url: tour02,
-    title: "Title 2",
+    url: PLinh02,
+    title: "Australian Parliament House in Canberra",
     id: 2,
   },
   {
-    url: tour03,
-    title: "Title 3",
+    url: PLinh03,
+    title: "Australian War Memorial in Canberra",
     id: 3,
   },
   {
-    url: tour04,
-    title: "Title 4",
+    url: ThuVu,
+    title: "Sydney Harbour view from the North",
     id: 4,
   },
   {
-    url: tour05,
-    title: "Title 5",
+    url: HuyLe,
+    title: "Iris Lodge Alpacas",
     id: 5,
   },
   {
-    url: tour01,
-    title: "Title 6",
+    url: TrieuVyTran,
+    title: "Jacaranda in Kirribilli",
     id: 6,
-  },
-  {
-    url: tour02,
-    title: "Title 7",
-    id: 7,
   },
 ];

@@ -10,7 +10,7 @@ import {
 } from "@tabler/icons-react";
 
 const Feature = ({ icon, title, description }) => (
-  <div>
+  <div className="rounded hover:bg-neutral-50 duration-100 ease-in-out p-6">
     <div className="relative flex items-center justify-center mx-auto">
       {icon}
     </div>
@@ -21,7 +21,7 @@ const Feature = ({ icon, title, description }) => (
 
 const FeaturesSection = () => (
   <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-    <div className="grid grid-cols-1 gap-12 text-center sm:grid-cols-2 md:grid-cols-3 lg:gap-y-16">
+    <div className="grid grid-cols-1 gap-6 text-center md:grid-cols-2 lg:grid-cols-3 lg:gap-y-16">
       <Feature
         icon={icon1}
         title="Explore As You Wish"

@@ -2,8 +2,8 @@
   min-height: rem(400px);
   background-image: linear-gradient(
     -60deg,
-    #edf0f2 0%,
-    #dadfe4 100%
+    #eaf0f5 0%,
+    #d4dfea 100%
     /* var(--mantine-color-green-0) 0%,
     var(--mantine-color-green-1) 100% */
   );
