@@ -24,7 +24,7 @@ const links = [
   { link: "/", label: "Home" },
   { link: "/gallery", label: "Gallery" },
   {
-    link: "javascript: void(0)", // a link that does nothing
+    link: "#", // a link that does nothing
     label: "Services",
     links: [
       { link: "/photoshoot", label: "Photoshoot" },
@@ -95,7 +95,6 @@ const Nav = () => {
   // Hide Navbar when scroll down & Show when scroll up
   const controlNavbar = () => {
     if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
-      console.log(window.scrollY, lastScrollY);
       setShow(false); 
     } else { // if scroll up show the navbar
       setShow(true);  
@@ -107,7 +106,6 @@ const Nav = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', controlNavbar);
-    console.log(show);
 
     // cleanup function
     return () => {

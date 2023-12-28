@@ -10,6 +10,7 @@
 html {
   overflow-y: auto;
   scrollbar-gutter: stable; /* reserve space for scroll bar */
+  scroll-behavior: smooth;
 }
 
 .app {
@@ -41,7 +42,7 @@ html {
 }
 
 .desc {
-  @apply mt-5 text-sm font-roboto font-normal text-neutral-500 max-w-2xl sm:text-base;
+  @apply mt-5 text-sm font-roboto font-normal text-neutral-600 max-w-2xl sm:text-base;
 }
 
 .highlight-hover {

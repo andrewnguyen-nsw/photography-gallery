@@ -18,6 +18,8 @@ export default function PhotoshootPackageCard({ icon, title, desc }) {
       </Text>
       {desc}
       <Button 
+        component='a'
+        href='#contact'
         fullWidth 
         color="gray.7" 
         rightSection={<IconArrowRight size={14} className="arrow-rotate-90" />} 
