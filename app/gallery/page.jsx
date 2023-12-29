@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { Tabs, Loader, rem } from "@mantine/core";
+import { Button, Tabs, Loader, rem } from "@mantine/core";
 import Image from "next/image";
 import {
   IconPhoto,
@@ -14,11 +14,12 @@ import {
   IconBuildingSkyscraper,
   IconDrone,
   IconMoodKid,
+  IconUpload
 } from "@tabler/icons-react";
 import classes from "./Tab.module.css";
 import Masonry from "react-masonry-css";
 import DropzoneButton from "@components/DropzoneButton/DropzoneButton";
-import { CldImage } from 'next-cloudinary';
+import { CldImage, CldUploadButton, CldUploadWidget } from 'next-cloudinary';
 
 
 // Styles for the icons used in the tabs
@@ -114,7 +115,16 @@ const Gallery = () => {
 // Dropzone button component wrapped for conditional rendering
 const DropzoneButtonWrapper = () => (
   <div className="pb-8">
-    <DropzoneButton />
+    {/* <CldUploadButton uploadPreset="upload_from_website" className="w-[100px] px-6 py-2 border-solid border border-gray-700 rounded-full"/> */}
+    <CldUploadWidget uploadPreset="upload_from_website>">
+      {({ open }) => {
+        return (
+          <Button variant="outline" leftSection={<IconUpload size={16}/>} onClick={() => open()}>
+            Upload new photos
+          </Button>
+        );
+      }}
+    </CldUploadWidget>
   </div>
 );
 
