@@ -32,7 +32,6 @@ const links = [
       { link: "/private-tour", label: "Private Tour" },
     ],
   },
-  { link: "/about", label: "About" },
 ];
 
 const Nav = () => {
