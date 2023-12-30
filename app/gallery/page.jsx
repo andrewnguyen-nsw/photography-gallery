@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { Tabs, Loader, rem } from "@mantine/core";
+import { Button, Tabs, Loader, rem } from "@mantine/core";
 import Image from "next/image";
 import {
   IconPhoto,
@@ -14,12 +14,13 @@ import {
   IconBuildingSkyscraper,
   IconDrone,
   IconMoodKid,
+  IconUpload
 } from "@tabler/icons-react";
 import classes from "./Tab.module.css";
 import Masonry from "react-masonry-css";
-import PhotoAlbum from "react-photo-album";
-import NextJsImage from "./NextJsImage";
 import DropzoneButton from "@components/DropzoneButton/DropzoneButton";
+import { CldImage, CldUploadButton, CldUploadWidget } from 'next-cloudinary';
+
 
 // Styles for the icons used in the tabs
 const iconStyle = { width: rem(12), height: rem(12) };
@@ -28,7 +29,7 @@ const iconStyle = { width: rem(12), height: rem(12) };
 const breakpointColumnsObj = {
   default: 3,
   768: 2,
-  400: 1,
+  480: 1,
 };
 
 // Tab items configuration, each item contains value, icon and label
@@ -49,28 +50,32 @@ const tabItems = [
 ];
 
 const Gallery = () => {
-  const { data: session } = useSession(); // Use session hook to manage user sessions
-  const [imagesData, setImagesData] = useState([]);
-  const [activeTab, setActiveTab] = useState('all');
-
-  // Effect hook to fetch gallery images on component mount
   useEffect(() => {
-    const fetchImagesData = async () => {
+    const fetchAllImagesData = async () => {
       try {
         const response = await fetch("api/gallery");
         const data = await response.json();
+        console.log(data);
         setImagesData(data);
       } catch (error) {
         console.error("Failed to fetch images: ", error);
       }
     };
 
-    fetchImagesData();
+    fetchAllImagesData();
   }, []);
+
+  const { data: session } = useSession(); // Use session hook to manage user sessions
+  const [imagesData, setImagesData] = useState([]);
+  const [activeTab, setActiveTab] = useState('all');
+
+  // Effect hook to fetch gallery images on component mount
+
 
   // Function to render each tab item
   const renderTab = (item) => (
     <Tabs.Tab
+      key={item.value}
       className={classes.tab}
       value={item.value}
       leftSection={<item.icon style={iconStyle} />}
@@ -110,36 +115,50 @@ const Gallery = () => {
 // Dropzone button component wrapped for conditional rendering
 const DropzoneButtonWrapper = () => (
   <div className="pb-8">
-    <DropzoneButton />
+    {/* <CldUploadButton uploadPreset="upload_from_website" className="w-[100px] px-6 py-2 border-solid border border-gray-700 rounded-full"/> */}
+    <CldUploadWidget uploadPreset="upload_from_website>">
+      {({ open }) => {
+        return (
+          <Button variant="outline" leftSection={<IconUpload size={16}/>} onClick={() => open()}>
+            Upload new photos
+          </Button>
+        );
+      }}
+    </CldUploadWidget>
   </div>
 );
 
 // Component to render the tab panel with images
 const TabsPanel = ({ genre, imagesData }) => {
-  const [photoAlbumImages, setPhotoAlbumImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [displayImages, setDisplayImages] = useState([]);
 
+  
   // Effect hook to update images on genre change
   useEffect(() => {
-    // setIsLoading(true);
-
-    // Filtering and mapping images based on the selected genre
-    const filteredImages =
-      genre === "all"
+    // Filter images based on genre
+    const filteredImages = 
+      genre === "all" 
         ? imagesData
-        : imagesData.filter((image) => JSON.parse(image.genre).includes(genre));
+        : imagesData.filter((image) => image.tags.includes(genre));
 
-    const transformedImages = filteredImages.map((image) => ({
-      src: image.url,
-      width: image.width,
-      height: image.height,
-      alt: image.alt,
-      // Add other properties as needed
-    }));
+    const displayImages = filteredImages.map((image) => {
+      return (
+        <CldImage
+          key={image.publicId}
+          src={image.publicId}
+          width={image.width}
+          height={image.height}
+          // sizes="(max-width: 480px) 200vw, (max-width: 768px) 100vw, 67vw"
+          alt=""
+        />
+      );
+    })
 
-    setPhotoAlbumImages(transformedImages);
+    setDisplayImages(displayImages);
     setIsLoading(false);
   }, [genre, imagesData]);
+
 
   {if (isLoading) {
     return (
@@ -152,25 +171,12 @@ const TabsPanel = ({ genre, imagesData }) => {
   // Render layout for images
   return (
     <Tabs.Panel value={genre} className="min-h-[50vh]">
-      <PhotoAlbum
-        photos={photoAlbumImages}
-        layout="columns"
-        columns={(containerWidth) => {
-          if (containerWidth < 640) return 1;
-          if (containerWidth < 1024) return 2;
-          return 3;
-        }}
-        renderPhoto={NextJsImage}
-        defaultContainerWidth={1200}
-        // sizes={{
-        //   size: "calc(100vw - 40px)",
-        //   sizes: [
-        //     { viewport: "(max-width: 299px)", size: "calc(100vw - 10px)" },
-        //     { viewport: "(max-width: 599px)", size: "calc(100vw - 20px)" },
-        //     { viewport: "(max-width: 1199px)", size: "calc(100vw - 30px)" },
-        //   ],
-        // }}
-      />
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column">
+        {displayImages}
+      </Masonry>
     </Tabs.Panel>
   );
 };

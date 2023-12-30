@@ -95,15 +95,15 @@ a:hover .arrow-rotate-180 {
   display: -webkit-box; 
   display: -ms-flexbox; 
   display: flex;
-  margin-left: -20px;
+  margin-left: -12px;
   width: auto;
 }
 .my-masonry-grid_column {
-  padding-left: 20px; 
+  padding-left: 12px; 
   background-clip: padding-box;
 }
 
 .my-masonry-grid_column > img { 
   background: grey;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }

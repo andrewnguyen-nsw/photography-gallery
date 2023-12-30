@@ -7,11 +7,8 @@ import Image from "next/image";
 import AndrewNguyenLogo from "@public/assets/images/logo.png";
 
 const links = [
-  { link: '#', label: 'Contact' },
-  { link: '#', label: 'Privacy' },
-  { link: '#', label: 'Blog' },
-  { link: '#', label: 'Store' },
-  { link: '#', label: 'Careers' },
+  { link: 'https://online.fliphtml5.com/rdvyb/hpsl/?fbclid=IwAR04ELRzDhps_PEGdTvjIp3Z36foGSNCOUSN44izHLRDUZ7GX2IpzSnxqig', label: 'Porfolio' },
+  { link: 'https://bento.me/andrewnguyen', label: 'Link in Bio' },
 ];
 
 export default function Footer() {
@@ -22,6 +19,7 @@ export default function Footer() {
       href={link.link}
       lh={1}
       size="sm"
+      target='_blank'
     >
       {link.label}
     </Anchor>

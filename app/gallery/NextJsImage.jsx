@@ -7,7 +7,7 @@ const NextJsImage = ({ photo, imageProps, wrapperStyle }) => {
   return (
     <div style={{ ...wrapperStyle, position: 'relative' }}>
       <Image
-        src={photo.src}
+        src={photo.publicUrl}
         alt={alt || 'Photo'}
         title={title}
         width={photo.width}
