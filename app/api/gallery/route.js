@@ -11,9 +11,15 @@ export const GET = async (req) => {
         height: file.height,
         tags: file.tags,
       };
-    })
-    
-    return new Response(JSON.stringify(fileDetails), { status: 200 });
+    });
+
+    return new Response(JSON.stringify(fileDetails), {
+      status: 200,
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Content-Type": "application/json",
+      },
+    });
   } catch (error) {
     console.log(error);
     return new Response("Failed to fetch images.", { status: 500 });
@@ -23,7 +29,7 @@ export const GET = async (req) => {
 // export const POST = async (req) => {
 //   const { file, genre, altText } = await req.json();
 //   try {
-    
+
 //   } catch (error) {
 //     return new Response("Failed to upload image.", { status: 500 });
 //   }
