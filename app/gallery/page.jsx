@@ -116,7 +116,7 @@ const Gallery = () => {
 const DropzoneButtonWrapper = () => (
   <div className="pb-8">
     {/* <CldUploadButton uploadPreset="upload_from_website" className="w-[100px] px-6 py-2 border-solid border border-gray-700 rounded-full"/> */}
-    <CldUploadWidget uploadPreset="upload_from_website>">
+    <CldUploadWidget uploadPreset="upload_from_website">
       {({ open }) => {
         return (
           <Button variant="outline" leftSection={<IconUpload size={16}/>} onClick={() => open()}>

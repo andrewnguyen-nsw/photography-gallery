@@ -109,7 +109,7 @@ export default function Home() {
             </p>
             <Group gap="lg" className="mt-5">
               <div className="relative inline-flex group">
-                <div class="absolute transition-all duration-1000 opacity-40 -inset-px bg-gradient-to-r from-[#57534E] via-[#38B2AC] to-[#34D399] rounded-xl blur-lg group-hover:opacity-75 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+                <div className="absolute transition-all duration-1000 opacity-40 -inset-px bg-gradient-to-r from-[#57534E] via-[#38B2AC] to-[#34D399] rounded-xl blur-lg group-hover:opacity-75 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
                 <Button component={Link} href="/gallery" variant="filled">See my work</Button>
               </div>
               <Button component={Link} href="https://www.instagram.com/eke.minh/" rel="noopener noreferrer" target="_blank" variant="outline">Follow me on Instagram</Button>
