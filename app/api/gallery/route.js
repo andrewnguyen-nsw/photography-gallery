@@ -16,9 +16,9 @@ export const GET = async (req) => {
     return new Response(JSON.stringify(fileDetails), {
       status: 200,
       headers: {
-        'Cache-Control': 'public, s-maxage=1',
-        'CDN-Cache-Control': 'public, s-maxage=60',
-        'Vercel-CDN-Cache-Control': 'public, s-maxage=60',
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        "CDN-Cache-Control": "no-cache, no-store, max-age=0, must-revalidate", // Prevent CDN caching
+        "Vercel-CDN-Cache-Control": "no-cache, no-store, max-age=0, must-revalidate", // Specifically prevent Vercel Edge Cache
         "Content-Type": "application/json",
       },
     });
