@@ -6,6 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import heroSectionBackgroundLarge from "/public/assets/images/HeroSection-2.jpg";
 import heroSectionBackgroundMobile from "/public/assets/images/HeroSection.jpg";
+import Vy from "/public/assets/images/Vy.jpg";
+import BehindAManQVB from "/public/assets/images/BehindAManQVB.jpg";
+import OperaHouse from "/public/assets/images/OperaHouse.jpg";
+import CoupleViewFromMrsMacquarieChair from "/public/assets/images/CoupleViewFromMrsMacquarieChair.jpg";
 import aboutMe from "/public/assets/images/Avatar_Veu.png";
 
 export default function Home() {
@@ -14,7 +18,7 @@ export default function Home() {
       {/* // HERO SECTION ----------------------------------------------------------------------- */}
       <section className="flex-center flex-col ">
         <h1 className="h1_text text-center">
-          <span className="highlight-hover">Capturing</span> {" "}
+          <span className="highlight-hover">Capturing</span>{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r to-stone-600 from-gray-800">
             {" "}
             Moments
@@ -28,12 +32,15 @@ export default function Home() {
         <Group gap="lg" className="mt-5">
           <div className="relative inline-flex group">
             <div className="absolute transition-all duration-1000 opacity-40 -inset-px bg-gradient-to-r from-[#57534E] via-[#38B2AC] to-[#34D399] rounded-xl blur-lg group-hover:opacity-75 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-            <Button component={Link} href="/gallery" variant="filled">Explore</Button>
+            <Button component={Link} href="/gallery" variant="filled">
+              Explore
+            </Button>
           </div>
-          
-          <Button component={Link} href="#about-me" variant="outline">About me</Button>
-        </Group>
 
+          <Button component={Link} href="#about-me" variant="outline">
+            About me
+          </Button>
+        </Group>
 
         <Image
           src={heroSectionBackgroundLarge}
@@ -54,13 +61,14 @@ export default function Home() {
         <Grid gutter="60">
           <Grid.Col span={{ base: 12, md: 4 }}>
             <h2 className="h2_text">
-              Explore the <span className="highlight-hover">Diverse World</span> of Photography
+              Explore the <span className="highlight-hover">Diverse World</span>{" "}
+              of Photography
             </h2>
             <p className="desc">
-              Discover a wide range of photography genres, each showcasing the
-              unique vision and talent of our photographer. From stunning
-              landscapes to captivating portraits, my gallery offers a visual
-              journey like no other.
+              Dive into my world of photography where each picture shows my own
+              style and creativity. From beautiful landscapes to eye-catching
+              portraits, my gallery takes you on a unique and visually stunning
+              journey.
             </p>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 8 }}>
@@ -68,22 +76,22 @@ export default function Home() {
               <GenresCard
                 title="Portrait"
                 description="Capturing the essence of individuals through close-ups, showcasing their expressions and personalities."
-                image="https://storage.googleapis.com/andrew-gallery-photos/Homepage/Vy.JPG"
+                image="/assets/images/Vy.jpg"
               />
               <GenresCard
                 title="Landscape"
-                description="Capturing the essence of individuals through close-ups, showcasing their expressions and personalities."
-                image="https://storage.googleapis.com/andrew-gallery-photos/Homepage/OperaHouse.jpg"
+                description="Exploring the beauty of nature and the world around us. Capturing breathtaking scenes from serene countryside to urban skylines."
+                image="/assets/images/OperaHouse.jpg"
               />
               <GenresCard
                 title="Street"
-                description="Capturing the essence of individuals through close-ups, showcasing their expressions and personalities."
-                image="https://storage.googleapis.com/andrew-gallery-photos/Homepage/BehindAManQVB.jpg"
+                description="Unveiling the dynamic energy and stories of the streets. Candid shots that reveal the rhythm and mood of urban life."
+                image="/assets/images/BehindAManQVB.jpg"
               />
               <GenresCard
                 title="And more..."
                 description=""
-                image="https://storage.googleapis.com/andrew-gallery-photos/Homepage/CoupleViewFromMrsMacquarieChair.jpg"
+                image="/assets/images/CoupleViewFromMrsMacquarieChair.jpg"
               />
             </SimpleGrid>
           </Grid.Col>
@@ -97,7 +105,7 @@ export default function Home() {
             src={aboutMe}
             alt="About Me"
             quality={100}
-            style={{objectFit: "contain"}}
+            style={{ objectFit: "contain" }}
             className="w-11/12 md:w-5/12 mb-6 md:mb-0"
           />
           <div className="w-full md:w-1/2">
@@ -105,14 +113,33 @@ export default function Home() {
               <span className="highlight-hover">Who am I?</span>
             </h2>
             <p className="desc">
-            Hello! I&apos;m Andrew (also known as Thai Minh Nguyen), a photographer based in Sydney, Australia. My journey in photography began around early 2021. Despite being relatively new to this art, my spirit is constantly on the move, brimming with eagerness to learn and grow. Alongside studying for my Bachelor of ICT, photography has blossomed into both a cherished hobby and a side hustle for me. Additionally, I also work as a private tour guide, which allows me to explore and share the diverse and captivating sights around me. I am thrilled to present my work here and hope you find as much joy in it as I do in creating it.
+              Hello! I&apos;m Andrew (also known as Thai Minh Nguyen), a
+              photographer based in Sydney, Australia. My journey in photography
+              began around early 2021. Despite being relatively new to this art,
+              my spirit is constantly on the move, brimming with eagerness to
+              learn and grow. Alongside studying for my Bachelor of ICT,
+              photography has blossomed into both a cherished hobby and a side
+              hustle for me. Additionally, I also work as a private tour guide,
+              which allows me to explore and share the diverse and captivating
+              sights around me. I am thrilled to present my work here and hope
+              you find as much joy in it as I do in creating it.
             </p>
             <Group gap="lg" className="mt-5">
               <div className="relative inline-flex group">
                 <div className="absolute transition-all duration-1000 opacity-40 -inset-px bg-gradient-to-r from-[#57534E] via-[#38B2AC] to-[#34D399] rounded-xl blur-lg group-hover:opacity-75 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-                <Button component={Link} href="/gallery" variant="filled">See my work</Button>
+                <Button component={Link} href="/gallery" variant="filled">
+                  See my work
+                </Button>
               </div>
-              <Button component={Link} href="https://www.instagram.com/eke.minh/" rel="noopener noreferrer" target="_blank" variant="outline">Follow me on Instagram</Button>
+              <Button
+                component={Link}
+                href="https://www.instagram.com/eke.minh/"
+                rel="noopener noreferrer"
+                target="_blank"
+                variant="outline"
+              >
+                Follow me on Instagram
+              </Button>
             </Group>
           </div>
         </Group>
