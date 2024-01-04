@@ -51,6 +51,11 @@ export const fetchGalleryFolder = async () => {
         'Authorization': authString
       },
       cache: 'no-store',
+      next: { // Prevent CDN caching
+        'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
+        'CDN-Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', // Prevent CDN caching
+        'Vercel-CDN-Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', // Specifically prevent Vercel Edge Cache
+      }
     });
 
     if (!response.ok) {
