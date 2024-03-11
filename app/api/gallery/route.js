@@ -1,6 +1,6 @@
 import { fetchGalleryFolder } from "@utils/cloudinary";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"; // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
 
 export const GET = async (req) => {
   try {
@@ -18,9 +18,6 @@ export const GET = async (req) => {
     return new Response(JSON.stringify(fileDetails), {
       status: 200,
       headers: {
-        // "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
-        // "CDN-Cache-Control": "no-cache, no-store, max-age=0, must-revalidate", // Prevent CDN caching
-        // "Vercel-CDN-Cache-Control": "no-cache, no-store, max-age=0, must-revalidate", // Specifically prevent Vercel Edge Cache
         "Content-Type": "application/json",
       },
     });

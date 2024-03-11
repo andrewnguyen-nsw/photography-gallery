@@ -7,12 +7,13 @@ import { Button, Modal, List } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconArrowRight } from '@tabler/icons-react';
 import { Accordion } from '@mantine/core';
+import preset01 from '../../public/assets/images/Preset_01.jpg'
+import preset02 from '../../public/assets/images/Preset_02.jpg'
+import preset03 from '../../public/assets/images/Preset_03.jpg'
+import preset04 from '../../public/assets/images/Preset_04.jpg'
 
 const imagesUrl = [
-  "https://storage.googleapis.com/andrew-gallery-photos/Preset/26-min.jpg",
-  "https://storage.googleapis.com/andrew-gallery-photos/Preset/6-min.jpg",
-  "https://storage.googleapis.com/andrew-gallery-photos/Preset/11-min.jpg",
-  "https://storage.googleapis.com/andrew-gallery-photos/Preset/12-min.jpg",
+  preset01, preset02, preset03, preset04
 ]
 
 const faqs = [
@@ -100,7 +101,7 @@ const Presets = () => {
                     className="rounded-sm bg-gray-100 mb-4 flex items-center justify-center"
                   >
                     <Image 
-                      src={img}
+                      src={img.src}
                       width={1500}
                       height={1000}
                       alt=""
