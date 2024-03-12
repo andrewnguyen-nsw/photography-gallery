@@ -8,8 +8,12 @@ import heroSectionBackgroundLarge from "/public/assets/images/HeroSection-2.jpg"
 import heroSectionBackgroundMobile from "/public/assets/images/HeroSection.jpg";
 import aboutMe from "/public/assets/images/Avatar_Veu.png";
 import { motion } from "framer-motion";
+import useParallax from "@hooks/useParallax";
+import AnimatedText from "@components/AnimatedText/AnimatedText";
 
 export default function Home() {
+  const { containerRef, sm, lg, xxl } = useParallax();
+
   return (
     <>
       {/* // HERO SECTION ----------------------------------------------------------------------- */}
@@ -70,19 +74,20 @@ export default function Home() {
             alt="Hero Section Background"
             quality={100}
             placeholder="blur"
-            className="mt-10 w-full max-w-7xl h-auto hidden rounded-sm sm:flex"
+            className="mt-10 max-w-7xl h-auto hidden rounded-sm sm:flex"
           />
           <Image
             src={heroSectionBackgroundMobile}
             alt="Hero Section Background"
             quality={100}
             placeholder="blur"
-            className="mt-10 w-full max-w-7xl h-auto flex rounded-sm sm:hidden"
+            className="mt-10 w-full h-auto flex rounded-sm sm:hidden"
           />
         </motion.div>
       </section>
 
       {/* // GENRES SECTION ----------------------------------------------------------------------- */}
+      {/* 
       <section className="homepage-container mt-16 md:mt-28 max-w-7xl">
         <Grid gutter="60">
           <Grid.Col span={{ base: 12, md: 4 }}>
@@ -122,6 +127,80 @@ export default function Home() {
             </SimpleGrid>
           </Grid.Col>
         </Grid>
+      </section>
+      */}
+
+      <section
+        ref={containerRef}
+        className="homepage-container mt-40 mx-auto max-w-7xl"
+      >
+        <AnimatedText
+          text="Explore the Diverse World of Photography"
+          className="h2_text text-center"
+        />
+        <motion.p
+          className="desc text-center mx-auto"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 1,
+            delay: 3.5,
+            ease: [0.6, 0.01, 0.05, 0.95],
+            once: true,
+          }}
+        >
+          Dive into my world of photography where each picture shows my own
+          style and creativity. From beautiful landscapes to eye-catching
+          portraits, my gallery takes you on a unique and visually stunning
+          journey.
+        </motion.p>
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 1,
+            duration: 2,
+            ease: [0.6, 0.01, 0.05, 0.95],
+          }}
+          viewport={{ margin: "300px" }}
+        >
+          <Grid className="py-48" gutter="xl">
+            <Grid.Col span={{ base: 12, md: 4 }} className="my-auto">
+              <motion.div style={{ y: lg }}>
+                <GenresCard
+                  title="Portrait"
+                  description="Capturing the essence of individuals through close-ups, showcasing their expressions and personalities."
+                  image="/assets/images/Vy.jpg"
+                />
+              </motion.div>
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, md: 4 }}>
+              <motion.div style={{ y: lg }}>
+                <GenresCard
+                  title="Landscape"
+                  description="Exploring the beauty of nature and the world around us. Capturing breathtaking scenes from serene countryside to urban skylines."
+                  image="/assets/images/OperaHouse.jpg"
+                />
+              </motion.div>
+              <motion.div style={{ y: sm }}>
+                <GenresCard
+                  title="Street"
+                  description="Unveiling the dynamic energy and stories of the streets. Candid shots that reveal the rhythm and mood of urban life."
+                  image="/assets/images/BehindAManQVB.jpg"
+                />
+              </motion.div>
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, md: 4 }} className="mt-60">
+              <motion.div style={{ y: xxl }}>
+                <GenresCard
+                  title="And more..."
+                  description=""
+                  image="/assets/images/CoupleViewFromMrsMacquarieChair.jpg"
+                />
+              </motion.div>
+            </Grid.Col>
+          </Grid>
+        </motion.div>
       </section>
 
       {/* // ABOUT ME SECTION ----------------------------------------------------------------------- */}
