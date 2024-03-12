@@ -15,7 +15,7 @@ export default function Demo() {
   const slides = images.map((image) => (
     <React.Fragment key={image}>
       <Carousel.Slide>
-        <Image src={image.src} alt="" />
+        <Image src={image.src} alt="" placeholder="blur" />
       </Carousel.Slide>
     </React.Fragment>
   ));

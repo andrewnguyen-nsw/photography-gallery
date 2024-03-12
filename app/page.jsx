@@ -6,58 +6,84 @@ import Image from "next/image";
 import Link from "next/link";
 import heroSectionBackgroundLarge from "/public/assets/images/HeroSection-2.jpg";
 import heroSectionBackgroundMobile from "/public/assets/images/HeroSection.jpg";
-import Vy from "/public/assets/images/Vy.jpg";
-import BehindAManQVB from "/public/assets/images/BehindAManQVB.jpg";
-import OperaHouse from "/public/assets/images/OperaHouse.jpg";
-import CoupleViewFromMrsMacquarieChair from "/public/assets/images/CoupleViewFromMrsMacquarieChair.jpg";
 import aboutMe from "/public/assets/images/Avatar_Veu.png";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
     <>
       {/* // HERO SECTION ----------------------------------------------------------------------- */}
-      <section className="flex-center flex-col ">
-        <h1 className="h1_text text-center">
+      <section className="flex-center flex-col">
+        <motion.h1
+          className="h1_text text-center"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring" }}
+        >
           <span className="highlight-hover">Capturing</span>{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r to-stone-600 from-gray-800">
             {" "}
             Moments
           </span>
           <br /> Through the Lens of Life
-        </h1>
-        <p className="desc w-11/12 text-center">
+        </motion.h1>
+        <motion.p
+          className="desc w-11/12 text-center"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", delay: 0.1 }}
+        >
           Welcome to my gallery, where I showcase the beauty of the world
           through my lens. Explore my work and get inspired.
-        </p>
+        </motion.p>
         <Group gap="lg" className="mt-5">
-          <div className="relative inline-flex group">
+          <motion.div
+            className="relative inline-flex group"
+            initial={{ x: -30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ type: "spring" }}
+          >
             <div className="absolute transition-all duration-1000 opacity-40 -inset-px bg-gradient-to-r from-[#57534E] via-[#38B2AC] to-[#34D399] rounded-xl blur-lg group-hover:opacity-75 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
             <Button component={Link} href="/gallery" variant="filled">
               Explore
             </Button>
-          </div>
+          </motion.div>
 
-          <Button component={Link} href="#about-me" variant="outline">
-            About me
-          </Button>
+          <motion.div
+            initial={{ x: 30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ type: "spring" }}
+          >
+            <Button component={Link} href="#about-me" variant="outline">
+              About me
+            </Button>
+          </motion.div>
         </Group>
 
-        <Image
-          src={heroSectionBackgroundLarge}
-          alt="Hero Section Background"
-          quality={100}
-          className="mt-10 w-full max-w-6xl h-auto hidden rounded-sm sm:flex"
-        />
-        <Image
-          src={heroSectionBackgroundMobile}
-          alt="Hero Section Background"
-          quality={100}
-          className="mt-10 w-full max-w-6xl h-auto flex rounded-sm sm:hidden"
-        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ type: "spring" }}
+        >
+          <Image
+            src={heroSectionBackgroundLarge}
+            alt="Hero Section Background"
+            quality={100}
+            placeholder="blur"
+            className="mt-10 w-full max-w-7xl h-auto hidden rounded-sm sm:flex"
+          />
+          <Image
+            src={heroSectionBackgroundMobile}
+            alt="Hero Section Background"
+            quality={100}
+            placeholder="blur"
+            className="mt-10 w-full max-w-7xl h-auto flex rounded-sm sm:hidden"
+          />
+        </motion.div>
       </section>
 
       {/* // GENRES SECTION ----------------------------------------------------------------------- */}
-      <section className="homepage-container mt-16 md:mt-28">
+      <section className="homepage-container mt-16 md:mt-28 max-w-7xl">
         <Grid gutter="60">
           <Grid.Col span={{ base: 12, md: 4 }}>
             <h2 className="h2_text">
