@@ -9,7 +9,6 @@ import Provider from "@components/Provider/Provider";
 import Nav from "@components/Nav/Nav";
 import Footer from "@components/Footer/Footer";
 
-
 export const metadata = {
   title: "AndrewNguyen's Photography Gallery",
   description: "AndrewNguyen's Photography Gallery & Portfolio",
@@ -26,14 +25,12 @@ export default function RootLayout({ children }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
-      <body>
+      <body className="">
         <Provider>
           <MantineProvider theme={theme}>
             <div className="site-wrapper">
               <Nav />
-              <main className="content-wrapper">
-                {children}
-              </main>
+              <main className="content-wrapper">{children}</main>
               <Footer />
             </div>
           </MantineProvider>

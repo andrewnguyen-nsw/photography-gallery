@@ -15,8 +15,6 @@ import Link from 'next/link'
 import classes from './ContactForm.module.css';
 import { IconBrandMessenger } from '@tabler/icons-react'
 import { sendEmail } from './../../utils/sendEmail';
-import { set } from 'mongoose';
-import { partyPopper } from '/public/assets/icons/party-popper.svg';
 
 const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -48,8 +46,8 @@ const ContactForm = () => {
 
   return (
     <section className={classes.wrapper}>
-      <div className="my-6 md:my-8 sm:w-3/4 md:w-1/2 lg:w-5/12 mx-auto">
-        <h2 className='h2_text text-center mb-8 md:mb-10'>Book Now</h2>
+      <div className="my-6 md:my-8 sm:w-5/6 md:w-8/12 lg:w-5/12 sm:px-8 md:px-12 border border-gray-300 rounded-md">
+        <h2 className='h2_text text-center mt-6 mb-4 md:mt-8 md:mb-6'>Book Now</h2>
         <div className={classes.form}>
           <Button component={Link} href="https://www.m.me/ekeminhmu/" target='_blank' fullWidth color="#006AFF" leftSection={<IconBrandMessenger size={18} />}>Talk to me on Facebook Messenger</Button>
           <Divider my="md" label="OR" labelPosition="center" />

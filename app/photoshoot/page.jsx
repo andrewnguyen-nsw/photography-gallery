@@ -76,10 +76,12 @@ const Photoshoot = () => {
     <>
       <div className="homepage-container">
         <Carousel/>
-
+        
+        {/*
         <h2 lang="vi" className="h2_text text-center">Book đi chờ chi</h2>
         <h2 className="h2_serif text-center ">Want stunning photos?</h2>
 
+        
         <Grid className="mb-20 p-2">
           <Grid.Col span={{base:12, sm:6, lg:4}}>
             <PhotoshootPackageCard icon={iconCamera} title="Starter package" desc={starterList} />
@@ -91,6 +93,7 @@ const Photoshoot = () => {
             <PhotoshootPackageCard icon={iconCameraStar} title="Premium package" desc={premiumList} />
           </Grid.Col>
         </Grid>
+        */}
 
         <h2 lang="vi" className="h2_text text-center">Thiên hạ nói gì?</h2>
         <h2 className="h2_serif text-center ">Happy Clients</h2>

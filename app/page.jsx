@@ -10,9 +10,11 @@ import aboutMe from "/public/assets/images/Avatar_Veu.png";
 import { motion } from "framer-motion";
 import useParallax from "@hooks/useParallax";
 import AnimatedText from "@components/AnimatedText/AnimatedText";
+import { useMediaQuery } from "@mantine/hooks";
 
 export default function Home() {
   const { containerRef, sm, lg, xxl } = useParallax();
+  const isDesktop = useMediaQuery('(min-width: 48em)');
 
   return (
     <>
@@ -162,11 +164,11 @@ export default function Home() {
             duration: 2,
             ease: [0.6, 0.01, 0.05, 0.95],
           }}
-          viewport={{ margin: "300px" }}
+          viewport={{ margin: "800px" }}
         >
-          <Grid className="py-48" gutter="xl">
+          <Grid  className={isDesktop ? 'py-48' : 'py-24'} gutter="lg">
             <Grid.Col span={{ base: 12, md: 4 }} className="my-auto">
-              <motion.div style={{ y: lg }}>
+              <motion.div style={{ y: isDesktop ? lg : 0 }}>
                 <GenresCard
                   title="Portrait"
                   description="Capturing the essence of individuals through close-ups, showcasing their expressions and personalities."
@@ -175,14 +177,14 @@ export default function Home() {
               </motion.div>
             </Grid.Col>
             <Grid.Col span={{ base: 12, md: 4 }}>
-              <motion.div style={{ y: lg }}>
+              <motion.div style={{ y: isDesktop ? lg : 0 }} className={isDesktop ? '' : 'mb-5'}>
                 <GenresCard
                   title="Landscape"
                   description="Exploring the beauty of nature and the world around us. Capturing breathtaking scenes from serene countryside to urban skylines."
                   image="/assets/images/OperaHouse.jpg"
                 />
               </motion.div>
-              <motion.div style={{ y: sm }}>
+              <motion.div style={{ y: isDesktop ? sm : 0 }}>
                 <GenresCard
                   title="Street"
                   description="Unveiling the dynamic energy and stories of the streets. Candid shots that reveal the rhythm and mood of urban life."
@@ -190,8 +192,8 @@ export default function Home() {
                 />
               </motion.div>
             </Grid.Col>
-            <Grid.Col span={{ base: 12, md: 4 }} className="mt-60">
-              <motion.div style={{ y: xxl }}>
+            <Grid.Col span={{ base: 12, md: 4 }}  className={isDesktop ? 'mt-60' : 'mt-0'}>
+              <motion.div style={{ y: isDesktop ? xxl : 0 }}>
                 <GenresCard
                   title="And more..."
                   description=""
