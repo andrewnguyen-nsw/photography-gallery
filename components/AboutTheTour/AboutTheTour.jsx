@@ -10,7 +10,7 @@ import {
 } from "@tabler/icons-react";
 
 const Feature = ({ icon, title, description }) => (
-  <div className="rounded hover:bg-neutral-50 duration-100 ease-in-out p-6">
+  <div className="rounded-lg border border-transparent hover:bg-neutral-50/50 hover:border-neutral-200/70 backdrop-filter backdrop-blur-lg bg-opacity-80 duration-100 ease-in-out p-6">
     <div className="relative flex items-center justify-center mx-auto">
       {icon}
     </div>

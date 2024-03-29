@@ -76,7 +76,7 @@ const Gallery = () => {
   const renderTab = (item) => (
     <Tabs.Tab
       key={item.value}
-      className={classes.tab}
+      className={`${classes.tab} backdrop-filter backdrop-blur-lg bg-opacity-80`}
       value={item.value}
       leftSection={<item.icon style={iconStyle} />}
     >

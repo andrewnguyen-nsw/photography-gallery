@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
       {/* // HERO SECTION ----------------------------------------------------------------------- */}
-      <section className="flex-center flex-col">
+      <section className="flex-center flex-col z-10">
         <motion.h1
           className="h1_text text-center"
           initial={{ y: 20, opacity: 0 }}

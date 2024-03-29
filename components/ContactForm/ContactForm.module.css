@@ -8,7 +8,6 @@
 }
 
 .form {
-  background-color: var(--mantine-color-white);
   padding: var(--mantine-spacing-xl);
   border-radius: var(--mantine-radius-sm);
   /* box-shadow: var(--mantine-shadow-lg); */

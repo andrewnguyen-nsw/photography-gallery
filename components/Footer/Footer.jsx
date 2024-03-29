@@ -34,7 +34,7 @@ export default function Footer() {
   ));
 
   return (
-    <div className={classes.footer}>
+    <div className={`${classes.footer} bg-white backdrop-filter backdrop-blur-lg bg-opacity-80`}>
       <div className={classes.inner}>
         <Image
           src={AndrewNguyenLogo}

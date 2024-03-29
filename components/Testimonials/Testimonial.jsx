@@ -3,10 +3,10 @@ import Image from 'next/image';
 
 const Testimonial = ({ saying, name, city, imgSrc }) => {
   return (
-    <section className="pt-6 bg-white sm:pt-8 lg:pt-10">
+    <section className="pt-6 sm:pt-8 lg:pt-10">
       <div className="px-2 mx-auto max-w-7xl sm:px-4 lg:px-6">
           {/* Testimonial Item 1 */}
-          <div className="flex flex-col bg-gray-50 rounded-sm -ml-3">
+          <div className="flex flex-col bg-gray-50 backdrop-filter backdrop-blur-lg bg-opacity-80 rounded-sm -ml-3">
             <div className="flex flex-col justify-between flex-1 p-8">
               <div className="flex-1">
                 <blockquote>
