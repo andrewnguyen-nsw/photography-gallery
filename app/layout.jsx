@@ -11,8 +11,8 @@ import Footer from "@components/Footer/Footer";
 import CustomCursorWrapper from "@components/CustomCursorWrapper/CustomCursorWrapper";
 
 export const metadata = {
-  title: "AndrewNguyen's Photography Gallery",
-  description: "AndrewNguyen's Photography Gallery & Portfolio",
+  title: "Andrew Nguyen Photography",
+  description: "Andrew Nguyen's Photography Gallery & Portfolio",
 };
 
 export default function RootLayout({ children }) {
