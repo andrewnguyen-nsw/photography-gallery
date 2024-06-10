@@ -40,7 +40,7 @@ export const fetchGalleryFolder = async () => {
   const params = new URLSearchParams({
     prefix: 'gallery',
     tags: true,
-    max_results: 100
+    max_results: 120
   });
 
   const authString = 'Basic ' + Buffer.from(apiKey + ':' + apiSecret).toString('base64');
@@ -50,10 +50,6 @@ export const fetchGalleryFolder = async () => {
       headers: {
         'Authorization': authString
       },
-      cache: 'no-store',
-      next: { // Prevent CDN caching
-        revalidate: 10
-      }
     });
 
     if (!response.ok) {
@@ -61,6 +57,7 @@ export const fetchGalleryFolder = async () => {
     }
 
     const result = await response.json();
+    console.log("🚀 ~ fetchGalleryFolder ~ result:", result)
     return result.resources;
   } catch (error) {
     console.error('Error fetching gallery folder:', error);

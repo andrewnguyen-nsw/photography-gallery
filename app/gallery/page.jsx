@@ -40,13 +40,8 @@ const tabItems = [
   { value: "street", icon: IconMotorbike, label: "Street" },
   { value: "long-exposure", icon: IconComet, label: "Long Exposure" },
   { value: "pre-wedding", icon: IconConfetti, label: "Pre-Wedding" },
-  {
-    value: "architecture",
-    icon: IconBuildingSkyscraper,
-    label: "Architecture",
-  },
   { value: "drone", icon: IconDrone, label: "Drone" },
-  { value: "preschool", icon: IconMoodKid, label: "Preschool" },
+  { value: "preschool", icon: IconMoodKid, label: "Kids" },
 ];
 
 const Gallery = () => {
